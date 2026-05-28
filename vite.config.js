@@ -15,6 +15,8 @@ export default defineConfig({
         portfolio: resolve(__dirname, 'portfolio.html'),
         services: resolve(__dirname, 'services.html'),
         contact: resolve(__dirname, 'contact.html'),
+        knowledge: resolve(__dirname, 'knowledge/index.html'),
+        'knowledge-article': resolve(__dirname, 'knowledge/build-ai-team-4-months.html'),
       },
     },
   },
