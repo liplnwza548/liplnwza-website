@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO -->
-  <title>LiplnwZa — One human. Six AI agents. Infinite output.</title>
-  <meta name="description" content="LiplnwZa builds and orchestrates AI agent teams. Personal hub for AI architecture, automation, and content creation." />
+  <title>LiplnwZa — หนึ่งมนุษย์. หก AI agents. ผลผลิตไร้ขีดจำกัด.</title>
+  <meta name="description" content="LiplnwZa สร้างและควบคุมดูแลทีม AI agents ระบบอัตโนมัติ และการผลิตคอนเทนต์" />
   <meta name="keywords" content="LiplnwZa, AI, agents, automation, orchestration, content creation" />
   <meta name="author" content="LiplnwZa" />
   
   <!-- Open Graph -->
-  <meta property="og:title" content="LiplnwZa — One human. Six AI agents. Infinite output." />
-  <meta property="og:description" content="Building and orchestrating AI agent teams that work together to create, automate, and deliver." />
+  <meta property="og:title" content="LiplnwZa — หนึ่งมนุษย์. หก AI agents. ผลผลิตไร้ขีดจำกัด." />
+  <meta property="og:description" content="ออกแบบและเชื่อมโยงทีม AI agents เพื่อช่วยธุรกิจรันงานอัตโนมัติและสร้างคอนเทนต์อย่างไร้รอยต่อ" />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://liplnwza.vercel.app/" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   
   <!-- Styles -->
   <link rel="stylesheet" href="/src/style.css" />
@@ -33,40 +33,29 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="container">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container" style="position: relative; z-index: 10;">
       <div class="hero__content">
         <div class="hero__badge animate-on-scroll">
           <span class="hero__badge-dot"></span>
-          Deploying autonomous systems
+          กำลังพัฒนาและติดตั้งระบบอัตโนมัติ
         </div>
         <h1 class="hero__title animate-on-scroll">
-          Hi, I'm <span class="hero__name">LiplnwZa</span>
+          สวัสดี ผมคือ <span class="hero__name">LiplnwZa</span>
         </h1>
         <p class="hero__tagline animate-on-scroll">
-          One human. Six AI agents. Infinite output.
+          หนึ่งมนุษย์. หก AI agents. ผลผลิตไร้ขีดจำกัด.
         </p>
         <p class="hero__description animate-on-scroll">
-          I design and coordinate specialized AI agent teams to automate complex business operations, scale content production, and eliminate manual overhead.
+          ผมออกแบบและเชื่อมโยงทีม AI agents เพื่อช่วยธุรกิจรันงานอัตโนมัติ ขยายขนาดการผลิตคอนเทนต์ และลดภาระงานส่วนเกิน
         </p>
         <div class="hero__actions animate-on-scroll">
-          <a href="#projects" class="btn btn--primary" id="hero-cta">Explore Automated Workflows</a>
-          <a href="#links" class="btn btn--secondary" id="hero-contact">Discuss Your AI Pipeline</a>
+          <a href="/services.html" class="btn btn--primary" id="hero-cta">สำรวจบริการ</a>
+          <a href="/contact.html" class="btn btn--secondary" id="hero-contact">ติดต่อปรึกษา</a>
         </div>
       </div>
-      <div class="hero__visual animate-on-scroll">
-        <div class="hero__orbit">
-          <div class="hero__orbit-center">
-            <span>👤</span>
-          </div>
-          <div class="hero__orbit-ring">
-            <div class="hero__agent" style="--i: 0" title="Hermes — Orchestrator">🟣</div>
-            <div class="hero__agent" style="--i: 1" title="OpenClaw — Workflow">🟠</div>
-            <div class="hero__agent" style="--i: 2" title="Claude — Architect">🔵</div>
-            <div class="hero__agent" style="--i: 3" title="Gemini — Researcher">🟢</div>
-            <div class="hero__agent" style="--i: 4" title="Codex — Dev Partner">⚪</div>
-            <div class="hero__agent" style="--i: 5" title="AGY — Process Runner">🟤</div>
-          </div>
-        </div>
+      <div class="hero__visual animate-on-scroll" style="pointer-events: none;">
+        <!-- ปล่อยว่างเพื่อเปิดพื้นที่ให้กับ Particle Swarm ด้านหลัง -->
       </div>
     </div>
   </section>
@@ -75,24 +64,19 @@
   <section class="about" id="about">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <span class="section-label">About</span>
-        <h2 class="section-title">Replacing manual friction<br/>with coordinated AI systems</h2>
+        <span class="section-label">เกี่ยวกับ</span>
+        <h2 class="section-title">ลดขั้นตอนซ้ำซ้อน<br/>ด้วยระบบ AI ที่ทำงานร่วมกัน</h2>
       </div>
       <div class="about__content">
         <div class="about__text animate-on-scroll">
           <p>
-            I help businesses and creators scale by building autonomous AI agent teams. 
-            Instead of treating AI as a basic chat interface, I design multi-agent ecosystems 
-            where specialized agents collaborate to execute research, development, and operation tasks.
+            ผมช่วยให้ธุรกิจและนักสร้างสรรค์เติบโตด้วยการสร้างทีม AI agents ทำงานอัตโนมัติ แทนที่จะใช้ AI เป็นเพียงหน้าแชททั่วไป ผมออกแบบระบบนิเวศ multi-agent ที่มอบหมายหน้าที่ให้แต่ละยูนิตประสานงานกันเพื่อทำวิจัย พัฒนา และรันระบบอย่างเป็นระเบียบ
           </p>
           <p>
-            Using <strong>Agent-Vault</strong>, my custom Obsidian-based command center, 
-            I coordinate six specialized AI agents through modular workflows and routing systems. 
-            This setup converts complex, multi-step processes into automated, reliable outputs.
+            ผมใช้ <strong>Agent-Vault</strong> ซึ่งเป็น Obsidian-based command center เพื่อประสานงาน 6 AI agents ผ่าน workflow และระบบ routing ผลลัพธ์คือการแปลงกระบวนการที่ซับซ้อนหลายขั้นตอนให้เป็นผลงานที่ถูกต้องแม่นยำและอัตโนมัติ
           </p>
           <p>
-            By leveraging this multi-agent architecture, I deliver the output of a full operational department 
-            while keeping execution fast, consistent, and minimizing manual error.
+            ด้วยสถาปัตยกรรม multi-agent นี้ ผมสามารถส่งมอบผลงานได้เทียบเท่ากับแผนกปฏิบัติการทั้งแผนก โดยคงความเร็ว ความสม่ำเสมอ และลดความผิดพลาดจากฝีมือมนุษย์
           </p>
         </div>
         <div class="about__stats animate-on-scroll">
@@ -102,15 +86,15 @@
           </div>
           <div class="stat">
             <span class="stat__number" data-count="29">0</span>
-            <span class="stat__label">Active Skills</span>
+            <span class="stat__label">ทักษะพร้อมใช้</span>
           </div>
           <div class="stat">
             <span class="stat__number" data-count="5">0</span>
-            <span class="stat__label">LLM Models</span>
+            <span class="stat__label">โมเดล LLM</span>
           </div>
           <div class="stat">
-            <span class="stat__number special">∞</span>
-            <span class="stat__label">Output</span>
+            <span class="stat__number">∞</span>
+            <span class="stat__label">ผลลัพธ์</span>
           </div>
         </div>
       </div>
@@ -121,15 +105,15 @@
   <section class="skills" id="skills">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <span class="section-label">What I Do</span>
-        <h2 class="section-title">Core Solutions</h2>
+        <span class="section-label">สิ่งที่ผมทำ</span>
+        <h2 class="section-title">โซลูชันหลัก</h2>
       </div>
       <div class="skills__grid">
         <div class="skill-card animate-on-scroll" id="skill-orchestration">
           <div class="skill-card__icon">🧠</div>
-          <h3 class="skill-card__title">AI Team Architecture</h3>
+          <h3 class="skill-card__title">โครงสร้าง AI Team</h3>
           <p class="skill-card__text">
-            Deploy specialized, collaborative AI agent teams that run operations autonomously. By assigning targeted roles to LLMs, we reduce task delays and maximize daily output.
+            ติดตั้งทีม AI agents ทำงานร่วมกันเพื่อขับเคลื่อนระบบโดยอัตโนมัติ การแบ่งบทบาทหน้าที่ชัดเจนให้แต่ละ LLM ช่วยลดเวลาล่าช้าและเพิ่มผลงานรายวันสูงสุด
           </p>
           <div class="skill-card__tags">
             <span class="tag">Autonomous Ops</span>
@@ -139,9 +123,9 @@
         </div>
         <div class="skill-card animate-on-scroll" id="skill-automation">
           <div class="skill-card__icon">⚡</div>
-          <h3 class="skill-card__title">Workflow Automation</h3>
+          <h3 class="skill-card__title">ระบบอัตโนมัติ (Workflow Automation)</h3>
           <p class="skill-card__text">
-            Convert manual operations into zero-friction automated pipelines. Integrate POS systems, Google Workspace, and Telegram hooks to save hours of repetitive admin work.
+            เปลี่ยนงานทำมือที่ซับซ้อนให้เป็น pipeline อัตโนมัติ เชื่อมโยงระบบ POS, Google Workspace และ Telegram hooks เพื่อประหยัดเวลาการทำงานซ้ำซาก
           </p>
           <div class="skill-card__tags">
             <span class="tag">Time Saved</span>
@@ -151,9 +135,9 @@
         </div>
         <div class="skill-card animate-on-scroll" id="skill-content">
           <div class="skill-card__icon">🎨</div>
-          <h3 class="skill-card__title">Automated Media Engines</h3>
+          <h3 class="skill-card__title">ระบบผลิตสื่ออัตโนมัติ</h3>
           <p class="skill-card__text">
-            Produce high-quality content at scale. Orchestrate automated pipelines that handle research, script writing, TTS, and video rendering to publish media assets faster and more consistently.
+            ผลิตคอนเทนต์คุณภาพสูงจำนวนมากผ่านระบบ pipeline อัตโนมัติ ครอบคลุมการวิจัย เขียนสคริปต์ สังเคราะห์เสียง (TTS) และเรนเดอร์วิดีโอ เพื่อเผยแพร่สื่อได้เร็วและสม่ำเสมอยิ่งขึ้น
           </p>
           <div class="skill-card__tags">
             <span class="tag">Content Scale</span>
@@ -169,16 +153,16 @@
   <section class="projects" id="projects">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <span class="section-label">Work</span>
-        <h2 class="section-title">Systems & Pipelines</h2>
+        <span class="section-label">ผลงาน</span>
+        <h2 class="section-title">ระบบและกระบวนการทำงาน</h2>
       </div>
       <div class="projects__grid">
         <article class="project-card project-card--featured animate-on-scroll" id="project-agent-vault">
-          <div class="project-card__badge">Featured System</div>
+          <div class="project-card__badge">ระบบแนะนำ</div>
           <div class="project-card__content">
             <h3 class="project-card__title">Agent-Vault / Team OS</h3>
             <p class="project-card__text">
-              An Obsidian-driven operating system that allows one human to orchestrate a team of 6 AI agents. Centralizes project context and automates task handoffs, scaling individual capability to team-level execution capacity.
+              ระบบปฏิบัติการขับเคลื่อนด้วย Obsidian ช่วยให้มนุษย์คนเดียวควบคุมทีม 6 AI agents ได้อย่างไร้รอยต่อ โดยรวม context ของโครงการไว้ที่ศูนย์กลางและส่งต่องานอัตโนมัติ ยกระดับความสามารถส่วนบุคคลขึ้นไปเทียบเท่าระดับแผนก
             </p>
             <div class="project-card__meta">
               <span class="tag">Obsidian</span>
@@ -191,7 +175,7 @@
           <div class="project-card__content">
             <h3 class="project-card__title">AI Brand Production Studio</h3>
             <p class="project-card__text">
-              A fully automated media engine converting research into ready-to-publish video assets. Uses TTS synthesis and programmatic video rendering to cut manual creation time significantly.
+              ระบบผลิตสื่ออัตโนมัติแปลงข้อมูลดิบจากการค้นคว้าให้เป็นวิดีโอพร้อมเผยแพร่ ใช้การสังเคราะห์เสียง TTS และเรนเดอร์วิดีโอตามโปรแกรม ช่วยลดเวลาการทำงานลงอย่างมาก
             </p>
             <div class="project-card__meta">
               <span class="tag">Programmatic Video</span>
@@ -204,7 +188,7 @@
           <div class="project-card__content">
             <h3 class="project-card__title">POS Sales Automation</h3>
             <p class="project-card__text">
-              An integration mapping retail transaction logs directly to cloud databases, real-time dashboards, and LINE alert endpoints, significantly reducing manual bookkeeping.
+              ระบบเชื่อมโยงข้อมูลการขายหน้าร้าน (POS) ส่งตรงไปยังฐานข้อมูลบนคลาวด์ แดชบอร์ดแบบเรียลไทม์ และแจ้งเตือนผ่าน LINE ช่วยลดภาระการทำบัญชีรายวันได้มาก
             </p>
             <div class="project-card__meta">
               <span class="tag">API Integration</span>
@@ -217,7 +201,7 @@
           <div class="project-card__content">
             <h3 class="project-card__title">Skill Orchestrator</h3>
             <p class="project-card__text">
-              A natural language routing hub that maps user prompts to 29+ automated skills, dynamically chaining tasks and dispatching specialized agent units with minimal manual setup.
+              ศูนย์กลางกระจายคำสั่งด้วยภาษาธรรมชาติ โดยวิเคราะห์และจับคู่ prompts กับ 29+ ทักษะอัตโนมัติ พร้อมส่งต่องานระหว่าง agent ยูนิตต่างๆ โดยใช้แรงตั้งค่าเพียงเล็กน้อย
             </p>
             <div class="project-card__meta">
               <span class="tag">Intent Routing</span>
@@ -234,24 +218,24 @@
   <section class="links" id="links">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <span class="section-label">Connect</span>
-        <h2 class="section-title">Let's build together</h2>
-        <p class="section-subtitle">Reach out to automate your operations or collaborate on multi-agent systems.</p>
+        <span class="section-label">ช่องทางติดต่อ</span>
+        <h2 class="section-title">มาสร้างสรรค์ผลงานร่วมกัน</h2>
+        <p class="section-subtitle">ติดต่อเพื่อพัฒนาระบบอัตโนมัติสำหรับธุรกิจของคุณ หรือร่วมมือสร้างระบบ multi-agent</p>
       </div>
       <div class="links__grid animate-on-scroll">
         <a href="https://github.com/LiplnwZa" target="_blank" rel="noopener" class="link-card" id="link-github">
           <svg class="link-card__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span class="link-card__name">Explore Codebases</span>
+          <span class="link-card__name">สำรวจ Codebase</span>
           <span class="link-card__arrow">→</span>
         </a>
         <a href="https://t.me/LiplnwZa" target="_blank" rel="noopener" class="link-card" id="link-telegram">
           <svg class="link-card__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          <span class="link-card__name">Discuss Automation</span>
+          <span class="link-card__name">พูดคุยเรื่องระบบอัตโนมัติ</span>
           <span class="link-card__arrow">→</span>
         </a>
         <a href="mailto:contact@liplnwza.dev" class="link-card" id="link-email">
           <svg class="link-card__icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span class="link-card__name">Start Collaboration</span>
+          <span class="link-card__name">เริ่มโปรเจกต์ใหม่</span>
           <span class="link-card__arrow">→</span>
         </a>
       </div>
@@ -261,6 +245,7 @@
   {{> footer}}
 
   <!-- Scripts -->
+  <script type="module" src="/src/hero.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

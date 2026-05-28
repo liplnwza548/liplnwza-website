@@ -49,6 +49,7 @@ function initNav() {
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('is-active');
     menu.classList.toggle('is-open');
+    nav.classList.toggle('nav--open');
     document.body.style.overflow = menu.classList.contains('is-open') ? 'hidden' : '';
   });
 
@@ -57,6 +58,7 @@ function initNav() {
     link.addEventListener('click', () => {
       toggle.classList.remove('is-active');
       menu.classList.remove('is-open');
+      nav.classList.remove('nav--open');
       document.body.style.overflow = '';
     });
   });
