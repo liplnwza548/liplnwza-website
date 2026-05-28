@@ -1,0 +1,46 @@
+{
+  "hash": "636653dc",
+  "configHash": "047e6670",
+  "lockfileHash": "b076f7cc",
+  "browserHash": "147e66f5",
+  "optimized": {
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "394a168b",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/EffectComposer.js": {
+      "src": "../../node_modules/three/examples/jsm/postprocessing/EffectComposer.js",
+      "file": "three_examples_jsm_postprocessing_EffectComposer__js.js",
+      "fileHash": "2d0d1c89",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/RenderPass.js": {
+      "src": "../../node_modules/three/examples/jsm/postprocessing/RenderPass.js",
+      "file": "three_examples_jsm_postprocessing_RenderPass__js.js",
+      "fileHash": "86ed7dd0",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/UnrealBloomPass.js": {
+      "src": "../../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "file": "three_examples_jsm_postprocessing_UnrealBloomPass__js.js",
+      "fileHash": "4c1b21bd",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "CopyShader-Djd0Zn4R": {
+      "file": "CopyShader-Djd0Zn4R.js",
+      "isDynamicEntry": false
+    },
+    "Pass-CCGE3qU_": {
+      "file": "Pass-CCGE3qU_.js",
+      "isDynamicEntry": false
+    },
+    "three.module-DxFt-LEc": {
+      "file": "three.module-DxFt-LEc.js",
+      "isDynamicEntry": false
+    }
+  }
+}
