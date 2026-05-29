@@ -17,6 +17,7 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         knowledge: resolve(__dirname, 'knowledge/index.html'),
         'knowledge-article': resolve(__dirname, 'knowledge/build-ai-team-4-months.html'),
+        'knowledge-article-2': resolve(__dirname, 'knowledge/what-is-ai-agent.html'),
       },
     },
   },

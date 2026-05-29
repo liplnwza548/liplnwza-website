@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent คืออะไร? — อธิบายแบบคนไม่เคยเขียนโค้ด | LiplnwZa</title>
+  <meta name="description" content="Agent ไม่ใช่ศัพท์น่ากลัว — มันคือ 'ผู้ช่วย AI ที่ทำงานแทนคุณได้' มาดูว่า Agent คืออะไร ต่างจาก ChatGPT ยังไง และคุณเริ่มใช้ได้ยังไงวันนี้">
+  <link rel="canonical" href="https://liplnwza.vercel.app/knowledge/what-is-ai-agent.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics (GA4) — แทนที่ G-RB2RBSNKVR ด้วย Measurement ID จริง -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2RBSNKVR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RB2RBSNKVR');
+  </script>
+  <style>
+    .article-content { max-width: 720px; margin: 0 auto; font-size: 1.1rem; line-height: 1.9; }
+    .article-content h2 { color: var(--color-accent); margin-top: 2.5rem; font-size: 1.5rem; }
+    .article-content h3 { margin-top: 2rem; font-size: 1.25rem; }
+    .article-content p { margin-bottom: 1.5rem; }
+    .article-content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    blockquote { border-left: 4px solid var(--color-accent); padding-left: 1.2rem; margin: 1.5rem 0; color: var(--color-text-secondary); font-style: italic; }
+    .article-header { text-align: center; margin-bottom: 2rem; }
+    .article-header .breadcrumb { font-size: 0.9rem; color: var(--color-text-tertiary); margin-bottom: 0.5rem; }
+    .article-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .article-header .meta { font-size: 0.85rem; color: var(--color-text-tertiary); }
+    .highlight-box { background: rgba(10,143,143,0.08); border: 1px solid var(--color-accent); border-radius: 10px; padding: 1.5rem; margin: 2rem 0; }
+    .highlight-box strong { color: var(--color-accent); }
+    .agent-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0;
+    }
+    .agent-card .name { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
+    .agent-card .role { font-size: 0.85rem; color: var(--color-text-tertiary); margin-bottom: 0.3rem; }
+    .agent-card .desc { font-size: 0.95rem; }
+    .step-box {
+      background: rgba(45,212,191,0.05); border: 1px solid rgba(45,212,191,0.2);
+      border-radius: 10px; padding: 1.2rem; margin: 1rem 0;
+    }
+    .step-box .step-title { font-weight: 700; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .tool-tag {
+      display: inline-block; background: rgba(45,212,191,0.12); color: var(--color-accent);
+      padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.85rem; margin: 0.2rem 0.3rem;
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="/assets/style-ZbJN9KzN.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="/" class="nav__logo" id="nav-logo">LiplnwZa</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="/#hero" class="nav__link">หน้าแรก</a></li>
+        <li><a href="/#about" class="nav__link">เกี่ยวกับ</a></li>
+        <li><a href="/services.html" class="nav__link">บริการ</a></li>
+        <li><a href="/portfolio.html" class="nav__link">ผลงาน</a></li>
+        <li><a href="/knowledge/" class="nav__link">คลังความรู้</a></li>
+        <li><a href="/contact.html" class="nav__link nav__link--cta">ติดต่อ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <article class="article-content container">
+      <header class="article-header">
+        <p class="breadcrumb"><a href="./">← กลับไปคลังความรู้</a></p>
+        <p class="section-label">เริ่มต้นจาก 0</p>
+        <h1>AI Agent คืออะไร? — อธิบายแบบคนไม่เคยเขียนโค้ด</h1>
+        <p class="meta">LiplnwZa · พฤษภาคม 2026 · อ่าน 7 นาที</p>
+      </header>
+
+      <p>ถ้าคุณเพิ่งเริ่มสนใจ AI แล้วเห็นคำว่า <strong>"Agent"</strong> หรือ <strong>"AI Agent"</strong> ผ่านตา — แล้วรู้สึกว่ามันเป็นศัพท์เทคนิคที่ไกลตัวเกินไป</p>
+      <p>บทความนี้เขียนเพื่อคุณ</p>
+      <p>ผมจะอธิบายว่า Agent คืออะไร โดย<strong>ไม่ใช้ศัพท์เทคนิค</strong> และ<strong>ไม่คิดว่าคุณมีความรู้ด้านคอมมาก่อน</strong> — เหมือนเพื่อนนั่งเล่าให้ฟัง</p>
+
+      <!-- ================================================================ -->
+      <h2>"Agent" แปลว่า "ตัวแทน" — ไม่ใช่คำน่ากลัว</h2>
+
+      <p>คำว่า Agent ในภาษาอังกฤษแปลตรงตัวว่า <strong>"ตัวแทน"</strong></p>
+      <p>เวลาเราเรียก Grab — เรากำลังจ้าง "ตัวแทน" ให้มารับเราไปส่งที่หมาย เราไม่จำเป็นต้องรู้ว่า Grab คำนวณเส้นทางยังไง หรือระบบหลังบ้านทำงานยังไง สิ่งที่เราทำคือ <strong>กดสั่ง → ถึงที่หมาย</strong> แค่นั้น</p>
+      <p><strong>AI Agent ก็เหมือนกัน</strong></p>
+      <p>มันคือ AI ที่คุณ<strong>สั่งงาน</strong>ได้ เหมือนมีลูกน้อง 1 คน — คุณบอกว่าอยากได้อะไร แล้วมันจะจัดการให้</p>
+
+      <div class="highlight-box">
+        <strong>🧠 จำง่ายๆ:</strong> AI Agent = AI ที่ไม่ใช่แค่ถาม-ตอบ แต่<strong>ลงมือทำ</strong>ให้คุณได้
+      </div>
+
+      <!-- ================================================================ -->
+      <h2>AI Agent กับ AI ธรรมดาต่างกันยังไง</h2>
+
+      <p>ลองนึกภาพ:</p>
+
+      <p><strong>AI ธรรมดา (ChatGPT, Gemini):</strong><br>
+      เหมือนเพื่อนที่เก่งมาก — คุณถามอะไร เขาตอบได้หมด<br>
+      แต่เขา<strong>ทำอะไรให้คุณไม่ได้</strong> — ถามได้อย่างเดียว</p>
+
+      <p><strong>AI Agent (Hermes, Claude with tools):</strong><br>
+      เหมือนผู้ช่วยส่วนตัว — คุณสั่งงาน เขา<strong>ลงมือทำ</strong>ให้<br>
+      ไม่ใช่แค่บอกว่าต้องทำอะไร แต่<strong>จัดการให้เสร็จ</strong></p>
+
+      <p><strong>ตัวอย่างจริง:</strong></p>
+      <ul>
+        <li>คุณถาม ChatGPT: "สรุปไฟล์ PDF นี้ให้หน่อย" → ChatGPT ตอบ: "ผมไม่สามารถอ่านไฟล์ได้ครับ"</li>
+        <li>คุณสั่ง Agent: "สรุปไฟล์ PDF นี้ให้หน่อย" → Agent <strong>เดินไปเปิดไฟล์ → อ่าน → สรุปให้</strong></li>
+      </ul>
+
+      <p>ความต่างคือ <strong>Agent มีมือ</strong> — มันหยิบจับเครื่องมือได้ ส่วน AI ธรรมดามีแค่ปาก</p>
+
+      <blockquote>
+        "AI ธรรมดา = แผนที่ที่บอกทางให้<br>
+        AI Agent = คนขับรถที่พาคุณไปถึงที่"
+      </blockquote>
+
+      <!-- ================================================================ -->
+      <h2>Agent ทำงานยังไง — สูตร 3 ขั้นง่ายๆ</h2>
+
+      <p>เบื้องหลัง Agent ทุกตัวทำงานแค่ 3 ขั้นตอน:</p>
+
+      <div class="step-box">
+        <div class="step-title">① เข้าใจคำสั่ง</div>
+        <p style="margin:0;">Agent อ่านสิ่งที่คุณบอก แล้วตีความเป็น "งาน" — เหมือนลูกน้องฟัง brief จากเจ้านาย</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">② ลงมือทำ</div>
+        <p style="margin:0;">Agent เลือกใช้ "เครื่องมือ" (tools) ที่เหมาะสม — เช่น อ่านไฟล์, search ข้อมูล, เขียนโค้ด, ส่งข้อความ, เปิดเว็บ</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">③ บอกผลลัพธ์</div>
+        <p style="margin:0;">Agent กลับมารายงานว่าทำอะไรเสร็จแล้ว — พร้อมหลักฐาน</p>
+      </div>
+
+      <p><strong>ตัวอย่างการทำงานจริงของ Hermes (Agent ของผม):</strong></p>
+      <ul>
+        <li>ผมพิมพ์ใน Telegram: "เอมมี่ เช็คหน่อยว่าโปรเจกต์ Personal Website ตอนนี้ถึงไหนแล้ว"</li>
+        <li>Hermes ① เข้าใจว่าผมถามสถานะโปรเจกต์</li>
+        <li>② เปิดโฟลเดอร์ Agent-Vault → อ่านไฟล์ _INDEX.md, _TASKS.md, _LOG.md</li>
+        <li>③ ตอบกลับมา: "ตอนนี้ Phase 2 เสร็จแล้วครับ — 6 หน้า, 1 บทความ, deploy บน Vercel แล้ว"</li>
+      </ul>
+
+      <p>ทั้งหมดนี้ใช้เวลา <strong>ไม่ถึง 30 วินาที</strong></p>
+
+      <!-- ================================================================ -->
+      <h2>Agent 1 ตัวทำอะไรให้คุณได้บ้าง</h2>
+
+      <p>นี่คือสิ่งที่ Agent ช่วยคุณได้ — โดยคุณ<strong>ไม่ต้องเขียนโค้ดสักบรรทัด</strong>:</p>
+
+      <ul>
+        <li><strong>📄 อ่านเอกสารให้</strong> — ส่ง PDF ยาว 50 หน้ามา → สรุปให้ใน 5 บรรทัด</li>
+        <li><strong>🔍 หาข้อมูลให้</strong> — "เมื่อวานมีข่าว AI อะไรบ้าง" → ค้นหา + สรุป + เรียงลำดับให้</li>
+        <li><strong>✍️ เขียนเนื้อหาให้</strong> — "ช่วยร่างแผน marketing ร้านกาแฟ" → ร่างให้เลย</li>
+        <li><strong>📊 จัดการไฟล์ให้</strong> — "ย้ายรูปทั้งหมดไปโฟลเดอร์ใหม่ แล้วตั้งชื่อให้เรียบร้อย"</li>
+        <li><strong>🌐 ท่องเว็บให้</strong> — "เช็คราคา iPhone 16 Pro ทุกร้านในไทย" → เปิด browser → เทียบราคา → สรุป</li>
+        <li><strong>🤖 ทำงานอัตโนมัติ</strong> — "ทุกเช้า 7 โมง สรุปข่าว AI ส่งเข้า Telegram" → ทำเองทุกวัน ไม่มีวันลืม</li>
+        <li><strong>💻 สร้างเว็บไซต์ให้</strong> — "อยากได้เว็บส่วนตัว dark theme สวยๆ" → ออกแบบ + เขียนโค้ด + deploy ให้เสร็จ</li>
+      </ul>
+
+      <!-- ================================================================ -->
+      <h2>ทีม Agent 6 ตัวของ LiplnwZa</h2>
+
+      <p>เพื่อให้เห็นภาพชัดขึ้น — นี่คือ Agent ที่ผมใช้จริงในทีม:</p>
+
+      <div class="agent-card">
+        <div class="name">🤖 Hermes (เอมมี่)</div>
+        <div class="role">หัวหน้าทีม — รับคำสั่ง · แจกงาน · ตรวจงาน</div>
+        <div class="desc">อยู่กับผมตลอด 24 ชม. ใน Telegram คอยรับคำสั่งทุกอย่าง แล้วกระจายงานให้ Agent ตัวอื่น</div>
+      </div>
+
+      <div class="agent-card">
+        <div class="name">💻 Claude Code</div>
+        <div class="role">นักพัฒนา — เขียนโค้ด · สร้างเว็บ · แก้บั๊ก</div>
+        <div class="desc">เวลาเราอยากสร้างอะไร — เว็บไซต์, เครื่องมือ, ระบบ — Claude จัดการให้</div>
+      </div>
+
+      <div class="agent-card">
+        <div class="name">💻 Codex CLI</div>
+        <div class="role">นักพัฒนาคู่ — ทำงานคู่กับ Claude</div>
+        <div class="desc">ทำงานคนละส่วนพร้อมกันให้เสร็จเร็วขึ้น เหมือนมี dev 2 คนช่วยเขียนโค้ด</div>
+      </div>
+
+      <div class="agent-card">
+        <div class="name">🔍 Gemini CLI (เจนนี่)</div>
+        <div class="role">นักวิจัย — อ่านข้อมูลเยอะๆ · วิเคราะห์เชิงลึก</div>
+        <div class="desc">เวลาเราต้องค้นคว้าข้อมูลหนักๆ หรืออ่านเอกสารยาว — Gemini จัดการให้</div>
+      </div>
+
+      <div class="agent-card">
+        <div class="name">⚙️ AGY</div>
+        <div class="role">คนคุมระบบ — รัน process · เชื่อม API · แจ้งเตือน</div>
+        <div class="desc">ทำงานอัตโนมัติที่ต้องทำซ้ำๆ — เช็คระบบ, monitor, รัน pipeline</div>
+      </div>
+
+      <div class="agent-card">
+        <div class="name">🔗 OpenClaw</div>
+        <div class="role">ผู้ช่วยเสริม — เชื่อมต่อระบบภายนอก</div>
+        <div class="desc">ช่วยเชื่อมเว็บไซต์กับโลกภายนอก — deploy, host, จัดการไฟล์</div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>🔑 สำคัญ:</strong> คุณไม่จำเป็นต้องมี Agent 6 ตัวแบบผม — <strong>เริ่มจาก 1 ตัวก็พอ</strong> แล้วค่อยๆ เพิ่มตามความจำเป็น
+      </div>
+
+      <!-- ================================================================ -->
+      <h2>คุณเริ่มจากตรงไหน — 3 ขั้นตอนสำหรับมือใหม่</h2>
+
+      <p>สำหรับคนที่ยังไม่เคยใช้ AI Agent มาก่อน — นี่คือเส้นทางที่ผมแนะนำ:</p>
+
+      <div class="step-box">
+        <div class="step-title">ขั้นที่ 1: ใช้ AI แชทให้คล่องก่อน</div>
+        <p style="margin:0;">เริ่มจากแอปที่คุณมีอยู่แล้ว — ไม่ต้องติดตั้งอะไร</p>
+        <p style="margin-top:0.5rem;">
+          <span class="tool-tag">ChatGPT</span>
+          <span class="tool-tag">Gemini</span>
+          <span class="tool-tag">Claude</span>
+        </p>
+        <p style="margin-top:0.5rem; font-size:0.9rem; color:var(--color-text-tertiary);">ทั้งหมดใช้ฟรี — แค่เข้าเว็บ, login, เริ่มพิมพ์คำถาม ฝึกถามให้ละเอียด ฝึกสั่งให้มันอธิบายสิ่งที่คุณไม่เข้าใจ</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">ขั้นที่ 2: ลอง Agent จริงๆ สักตัว</div>
+        <p style="margin:0;">ตอนนี้มี Agent ฟรีที่ใช้ได้ทันที:</p>
+        <p style="margin-top:0.5rem;">
+          <span class="tool-tag">Claude (claude.ai)</span>
+          <span class="tool-tag">ChatGPT + Browse</span>
+          <span class="tool-tag">Gemini Gems</span>
+          <span class="tool-tag">Microsoft Copilot</span>
+        </p>
+        <ul style="margin-top:0.5rem;">
+          <li><strong>Claude (claude.ai)</strong> — ฟรี ใช้ tools ได้ เช่น search web, analyze files — แค่พิมพ์สั่ง</li>
+          <li><strong>ChatGPT</strong> — ฟรี พร้อม browsing — บอกให้มัน "อ่านบทความนี้แล้วสรุปให้" ได้</li>
+          <li><strong>Gemini (gemini.google.com)</strong> — ฟรี มี Extensions เชื่อม Gmail, Drive, YouTube</li>
+          <li><strong>Microsoft Copilot (copilot.microsoft.com)</strong> — ฟรี ค้นเว็บ + สร้างภาพ + วิเคราะห์ไฟล์</li>
+        </ul>
+        <p style="margin-top:0.5rem; font-size:0.9rem; color:var(--color-text-tertiary);">ลองสั่ง: "ช่วยสรุปข่าว AI วันนี้จาก 3 แหล่ง แล้วเปรียบเทียบให้" — คุณจะเห็นความต่างทันทีว่ามัน <strong>ลงมือทำให้</strong> ไม่ใช่แค่ตอบ</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">ขั้นที่ 3: ตั้ง Agent ให้ทำงานซ้ำๆ</div>
+        <p style="margin:0;">หลังจากลอง Agent แล้ว — ถ้างานไหนที่คุณต้องทำซ้ำทุกวัน:</p>
+        <ul style="margin-top:0.5rem;">
+          <li>สรุปข่าวตอนเช้า</li>
+          <li>เช็คราคาสินค้า</li>
+          <li>แปลเอกสาร</li>
+          <li>จัดระเบียบไฟล์</li>
+        </ul>
+        <p>ลองให้ Agent ช่วย automate สัก 1 อย่าง — <strong>ใช้เวลาเรียนรู้ ~1 ชั่วโมง แต่มันจะช่วยคุณได้ทุกวันตลอดไป</strong></p>
+        <p>(วิธี automate แบบละเอียด — อ่านต่อในบทความที่ 3: <em>วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง</em>)</p>
+      </div>
+
+      <!-- ================================================================ -->
+      <h2>สรุป — Agent ไม่ได้มาแทนคุณ แต่มาเป็นผู้ช่วย</h2>
+
+      <p>หลายคนกลัวว่า AI จะมาแย่งงาน หรือกลัวว่าใช้ไม่เป็นเพราะไม่มีพื้นฐาน</p>
+      <p>แต่ความจริงคือ:</p>
+
+      <ul>
+        <li><strong>Agent ไม่ได้มาแทนคุณ</strong> — มันมาทำงานที่คุณ<strong>ไม่อยากทำ</strong> และ<strong>ไม่ถนัด</strong></li>
+        <li><strong>Agent คือลูกน้องที่ไม่เคยกิน ไม่นอน ไม่ลา</strong> — ทำงาน 24 ชั่วโมง ไม่มีวันบ่น</li>
+        <li><strong>คุณไม่ต้องเก่ง AI</strong> — แค่<strong>กล้าลอง กล้าสั่ง กล้าพลาด</strong> → แล้วคุณจะเก่งขึ้นเอง</li>
+      </ul>
+
+      <p>ผมเองก็เริ่มจากศูนย์ — ไม่ได้เรียนคอม ไม่เคยเขียนโค้ด — แค่วันหนึ่งคิดว่า "ถ้ามีคนช่วยทำงานที่เราเบื่อๆ ได้ ชีวิตจะดีขึ้นแค่ไหน"</p>
+      <p>และตอนนี้ผมมี Agent ช่วยงานทุกวัน — <strong>คุณเองก็ทำได้</strong></p>
+
+      <blockquote>
+        "คุณไม่จำเป็นต้องเข้าใจทุกอย่างก่อนเริ่ม<br>
+        แค่เริ่ม — แล้วความเข้าใจจะตามมา"
+      </blockquote>
+
+      <hr style="margin: 3rem 0;">
+
+      <div class="highlight-box">
+        <strong>📚 อ่านต่อ:</strong><br>
+        👉 <a href="./build-ai-team-4-months.html" style="color:var(--color-accent);">วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</a> — จากศูนย์จนทำงานแทนคุณได้<br>
+        👉 <em>เร็วๆ นี้:</em> วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง — step-by-step สำหรับมือใหม่
+      </div>
+
+      <p>
+        <strong>📥 อยากอ่านแบบสั้น?</strong>
+        <a href="../downloads/what-is-ai-agent-summary.html">ดาวน์โหลด HTML สรุป 1 หน้า</a>
+      </p>
+      <p>
+        <strong>🎧 ฟังแบบ Podcast:</strong> เร็วๆ นี้ — Audio Overview จาก NotebookLM
+      </p>
+      <p>
+        <strong>💬 มีคำถาม?</strong>
+        <a href="../contact.html">ส่งข้อความหาผม</a> — ยินดีตอบทุกเรื่อง
+      </p>
+    </article>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p>© 2026 LiplnwZa — Built with AI Team</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
