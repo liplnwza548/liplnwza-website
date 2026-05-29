@@ -47,6 +47,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- หน้าดาวน์โหลด -->
   <url>

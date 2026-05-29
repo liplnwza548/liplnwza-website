@@ -18,6 +18,7 @@ export default defineConfig({
         knowledge: resolve(__dirname, 'knowledge/index.html'),
         'knowledge-article': resolve(__dirname, 'knowledge/build-ai-team-4-months.html'),
         'knowledge-article-2': resolve(__dirname, 'knowledge/what-is-ai-agent.html'),
+        'knowledge-article-3': resolve(__dirname, 'knowledge/setup-first-ai-team-one-hour.html'),
       },
     },
   },
