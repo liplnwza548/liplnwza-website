@@ -36,6 +36,100 @@ a { color: var(--accent); }
 .nav-mini { text-align: center; margin-bottom: 0.5rem; }
 .nav-mini a { font-size: 0.85rem; color: var(--text2); text-decoration: none; }
 .nav-mini a:hover { color: var(--accent); }
+
+/* ═══════ SLIDER ═══════ */
+.cyber-slider {
+  position: relative; width: 100%; margin: 2rem 0 1rem;
+}
+.slider-viewport {
+  overflow: hidden; border-radius: 14px;
+  background: rgba(13,17,23,0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(45,212,191,0.15);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 40px rgba(45,212,191,0.04);
+  position: relative;
+}
+.slider-viewport::before {
+  content:''; position:absolute; top:0;left:0;right:0; height:1px; z-index:2;
+  background: linear-gradient(90deg, transparent, rgba(45,212,191,0.5) 20%, rgba(45,212,191,0.8) 50%, rgba(45,212,191,0.5) 80%, transparent);
+}
+.slider-track {
+  display: flex; transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.cyber-slide {
+  min-width: 100%; box-sizing: border-box;
+  padding: 2rem 2rem 1.5rem; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  user-select: none; -webkit-user-select: none;
+}
+.slide-icon-big { font-size: 3rem; margin-bottom: 0.8rem; line-height: 1; }
+.slide-title-big {
+  font-size: 1.3rem; font-weight: 700; color: var(--accent);
+  text-shadow: 0 0 10px rgba(45,212,191,0.25); margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.slide-subtitle {
+  font-size: 0.95rem; color: var(--text2); line-height: 1.7; max-width: 480px;
+}
+.slide-month-tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 0.25rem 0.9rem; border-radius: 20px; margin-bottom: 0.7rem;
+  border: 1px solid; text-transform: uppercase;
+}
+.tag-teal { color: #2DD4BF; background: rgba(45,212,191,0.1); border-color: rgba(45,212,191,0.25); }
+.tag-purple { color: #A78BFA; background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.25); }
+.tag-green { color: #4ADE80; background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.25); }
+.tag-cta { color: #FBBF24; background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); }
+
+.slide-cta-btn {
+  display: inline-block; margin-top: 1rem;
+  padding: 0.6rem 1.8rem; border-radius: 8px;
+  background: rgba(45,212,191,0.12); border: 1px solid var(--accent);
+  color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.25s;
+}
+.slide-cta-btn:hover { background: rgba(45,212,191,0.22); box-shadow: 0 0 16px rgba(45,212,191,0.2); }
+
+/* Arrows */
+.slider-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(13,17,23,0.8); border: 1px solid rgba(45,212,191,0.2);
+  color: var(--accent); font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px); transition: all 0.25s;
+  opacity: 0.7;
+}
+.slider-arrow:hover { opacity: 1; background: rgba(45,212,191,0.12); box-shadow: 0 0 12px rgba(45,212,191,0.15); }
+.slider-arrow-left { left: 10px; }
+.slider-arrow-right { right: 10px; }
+
+/* Dots */
+.slider-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 1rem;
+}
+.slider-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer; transition: all 0.3s;
+}
+.slider-dot.active {
+  background: var(--accent); border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(45,212,191,0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cyber-slide { padding: 1.5rem 1.2rem 1.2rem; }
+  .slide-icon-big { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .slide-title-big { font-size: 1.05rem; }
+  .slide-subtitle { font-size: 0.82rem; max-width: 100%; }
+  .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
+  .slider-arrow-left { left: 4px; }
+  .slider-arrow-right { right: 4px; }
+  .slide-cta-btn { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+  .slide-month-tag { font-size: 0.68rem; padding: 0.2rem 0.7rem; }
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,17 +186,112 @@ a { color: var(--accent); }
 </ol>
 <p style="text-align:center;margin-top:1rem;">รวม ~4 เดือน จากศูนย์ — พัฒนาเพิ่มทุกวัน</p>
 
-<div class="slide-embed">
-    <div class="slide-icon">📊</div>
-    <span class="slide-label">Presentation Slides</span>
-    <span class="slide-title">Slide Deck — Coming Soon</span>
-    <span class="slide-badge">เร็วๆ นี้</span>
+<!-- ═══════ SLIDE PRESENTATION ═══════ -->
+<div class="cyber-slider" role="region" aria-label="สไลด์นำเสนอ">
+  <div class="slider-viewport">
+    <button class="slider-arrow slider-arrow-left" aria-label="สไลด์ก่อนหน้า" onclick="goToSlide(currentSlide-1)">◂</button>
+    <button class="slider-arrow slider-arrow-right" aria-label="สไลด์ถัดไป" onclick="goToSlide(currentSlide+1)">▸</button>
+    <div class="slider-track" id="sliderTrack">
+      <!-- Slide 1 — Cover -->
+      <div class="cyber-slide">
+        <div class="slide-icon-big">🧠</div>
+        <div class="slide-title-big">สรุปแผนย่อ:<br>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</div>
+        <div class="slide-subtitle">สเกลพลังคนเดียวให้เท่ากับบริษัทขนาดย่อมด้วย Agentic AI — จาก 0 สู่ทีม AI ที่ทำงานแทนคุณ 24 ชม.</div>
+      </div>
+      <!-- Slide 2 — Month 1 -->
+      <div class="cyber-slide">
+        <span class="slide-month-tag tag-teal">🗓️ เดือนที่ 1</span>
+        <div class="slide-icon-big">🤖</div>
+        <div class="slide-title-big">ตั้งไข่กับ น้อง Hermes</div>
+        <div class="slide-subtitle">พนักงานเบอร์ 1 — สายจัดการ คุมโปรเจกต์ และประสานงานท่อส่งข้อมูลหลัก<br>เริ่มจาก AI 1 ตัวที่อยู่ด้วยตลอดเวลา คุยผ่าน Telegram ด้วยภาษาไทย</div>
+      </div>
+      <!-- Slide 3 — Month 2 -->
+      <div class="cyber-slide">
+        <span class="slide-month-tag tag-purple">🗓️ เดือนที่ 2</span>
+        <div class="slide-icon-big">💻</div>
+        <div class="slide-title-big">ติดปีกสายดาร์กด้วย<br>Claude Code &amp; Codex CLI</div>
+        <div class="slide-subtitle">ทีมพัฒนาซอฟต์แวร์อัตโนมัติ — ลดเวลาเขียนโค้ดลง 80%<br>บอกแค่อยากได้อะไร AI เขียนโค้ดให้ทั้งโปรเจกต์ แค่ spec ชัดก็พอ</div>
+      </div>
+      <!-- Slide 4 — Month 3 -->
+      <div class="cyber-slide">
+        <span class="slide-month-tag tag-purple">🗓️ เดือนที่ 3</span>
+        <div class="slide-icon-big">🔍</div>
+        <div class="slide-title-big">ขยายคลังสมองด้วย<br>Gemini &amp; AGY</div>
+        <div class="slide-subtitle">ทีมรีเสิร์ชข้อมูลเชิงลึก — ค้นหาไอเดียและวิเคราะห์คู่แข่งแบบเรียลไทม์<br>Gemini วิเคราะห์เอกสารยาว AGY เชื่อม API อัตโนมัติ</div>
+      </div>
+      <!-- Slide 5 — Month 4 -->
+      <div class="cyber-slide">
+        <span class="slide-month-tag tag-green">🗓️ เดือนที่ 4</span>
+        <div class="slide-icon-big">🔗</div>
+        <div class="slide-title-big">เชื่อมระบบด้วย<br>Agent-Vault &amp; OpenClaw</div>
+        <div class="slide-subtitle">สร้างคลังความรู้ส่วนกลาง — ให้ AI ทุกตัวอ่านร่วมกันและทำงานอัตโนมัติ 24 ชม.<br>เปลี่ยน AI จาก "ผู้ช่วย" → "ทีม"</div>
+      </div>
+      <!-- Slide 6 — CTA -->
+      <div class="cyber-slide">
+        <span class="slide-month-tag tag-cta">📞 สรุป &amp; ติดต่อ</span>
+        <div class="slide-icon-big">🚀</div>
+        <div class="slide-title-big">คนเดียวก็ทำได้<br>หรือให้เราสร้างทีม AI ให้คุณ!</div>
+        <div class="slide-subtitle">สนใจติดตั้งระบบ AI สำหรับองค์กร — ออกแบบทีม AI ที่ตอบโจทย์ธุรกิจคุณ</div>
+        <a href="https://liplnwza.vercel.app/contact.html" class="slide-cta-btn">📬 ติดต่อ LiplnwZa</a>
+      </div>
+    </div>
   </div>
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots">
+    <span class="slider-dot active" onclick="goToSlide(0)"></span>
+    <span class="slider-dot" onclick="goToSlide(1)"></span>
+    <span class="slider-dot" onclick="goToSlide(2)"></span>
+    <span class="slider-dot" onclick="goToSlide(3)"></span>
+    <span class="slider-dot" onclick="goToSlide(4)"></span>
+    <span class="slider-dot" onclick="goToSlide(5)"></span>
+  </div>
+</div>
 
 <div class="footer">
 <p>LiplnwZa · พฤษภาคม 2026 · <a href="https://liplnwza.vercel.app/">liplnwza.vercel.app</a></p>
 </div>
 </div>
+
+
+<script>
+/* ═══════ SLIDER LOGIC ═══════ */
+(function(){
+  var track = document.getElementById('sliderTrack');
+  var dots = document.querySelectorAll('#sliderDots .slider-dot');
+  var totalSlides = 6;
+  window.currentSlide = 0;
+
+  window.goToSlide = function(idx) {
+    if (idx < 0) idx = totalSlides - 1;
+    if (idx >= totalSlides) idx = 0;
+    window.currentSlide = idx;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+  };
+
+  /* Touch / Swipe */
+  var touchStartX = 0, touchEndX = 0;
+  var viewport = track.parentElement;
+  viewport.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, {passive: true});
+  viewport.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    var diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      goToSlide(window.currentSlide + (diff > 0 ? 1 : -1));
+    }
+  }, {passive: true});
+
+  /* Keyboard arrows */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') goToSlide(window.currentSlide - 1);
+    if (e.key === 'ArrowRight') goToSlide(window.currentSlide + 1);
+  });
+})();
+</script>
 
 <script type="importmap">
 { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
