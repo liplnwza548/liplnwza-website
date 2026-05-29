@@ -1,178 +1,108 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง (ฟรี) — อธิบายแบบจับมือทำ ไม่ต้องเขียนโค้ด | LiplnwZa</title>
-  <meta name="description" content="ไม่ต้องมีทุนหนา ไม่ต้องเขียนโค้ดสักบรรทัด แค่ใช้เวลา 1 ชั่วโมงกับไอเดียของคุณ คุณก็สามารถสร้างทีมผู้ช่วย AI มาช่วยแบ่งเบาภาระงานของคุณได้ฟรีวันนี้">
-  <link rel="canonical" href="https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RB2RBSNKVR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RB2RBSNKVR');
-  </script>
-  <style>
-    .article-content { max-width: 720px; margin: 0 auto; font-size: 1.1rem; line-height: 1.9; }
-    .article-content h2 { color: var(--color-accent); margin-top: 2.5rem; font-size: 1.5rem; }
-    .article-content h3 { margin-top: 2rem; font-size: 1.25rem; }
-    .article-content p { margin-bottom: 1.5rem; }
-    .article-content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-    .article-content li { margin-bottom: 0.5rem; }
-    blockquote { border-left: 4px solid var(--color-accent); padding-left: 1.2rem; margin: 1.5rem 0; color: var(--color-text-secondary); font-style: italic; }
-    .article-header { text-align: center; margin-bottom: 2rem; }
-    .article-header .breadcrumb { font-size: 0.9rem; color: var(--color-text-tertiary); margin-bottom: 0.5rem; }
-    .article-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-    .article-header .meta { font-size: 0.85rem; color: var(--color-text-tertiary); }
-    .highlight-box { background: rgba(10,143,143,0.08); border: 1px solid var(--color-accent); border-radius: 10px; padding: 1.5rem; margin: 2rem 0; }
-    .highlight-box strong { color: var(--color-accent); }
-    .timeline-item {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0;
-    }
-    .timeline-item .time { font-weight: 700; color: var(--color-accent); font-size: 0.9rem; }
-    .timeline-item h4 { margin: 0.3rem 0; font-size: 1rem; }
-    .timeline-item p { margin: 0; font-size: 0.95rem; }
-    .cta-box {
-      background: rgba(45,212,191,0.1); border: 2px solid var(--color-accent);
-      border-radius: 12px; padding: 1.5rem; margin: 2rem 0; text-align: center;
-    }
-    .cta-box h3 { margin-top: 0; }
-  </style>
-  <link rel="stylesheet" crossorigin href="/assets/style-ZbJN9KzN.css">
+  <meta name="description" content="ไม่ต้องมีทุนหนา ไม่ต้องเขียนโค้ดสักบรรทัด แค่ใช้เวลา 1 ชั่วโมงกับไอเดียของคุณ คุณก็สามารถสร้างทีมผู้ช่วย AI มาช่วยแบ่งเบาภาระงานของคุณได้ฟรีวันนี้" />
+  <link rel="canonical" href="https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {{> analytics}}
 </head>
-<body>
-  <nav class="nav" id="nav">
-    <div class="nav__container">
-      <a href="/" class="nav__logo" id="nav-logo">LiplnwZa</a>
-      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav__menu" id="nav-menu">
-        <li><a href="/#hero" class="nav__link">หน้าแรก</a></li>
-        <li><a href="/#about" class="nav__link">เกี่ยวกับ</a></li>
-        <li><a href="/services.html" class="nav__link">บริการ</a></li>
-        <li><a href="/portfolio.html" class="nav__link">ผลงาน</a></li>
-        <li><a href="/knowledge/" class="nav__link">คลังความรู้</a></li>
-        <li><a href="/contact.html" class="nav__link nav__link--cta">ติดต่อ</a></li>
-      </ul>
-    </div>
-  </nav>
-
+<body data-theme="cyber" data-page="knowledge">
+  <canvas id="knowledge-canvas"></canvas>
+  {{> nav}}
   <main class="page-content">
-    <article class="article-content container">
-      <header class="article-header">
-        <p class="breadcrumb"><a href="./">← กลับไปคลังความรู้</a></p>
-        <p class="section-label">เริ่มต้นจาก 0</p>
-        <h1>วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง (ฟรี) — อธิบายแบบจับมือทำ ไม่ต้องเขียนโค้ด</h1>
-        <p class="meta">LiplnwZa · พฤษภาคม 2026 · อ่าน 6 นาที</p>
-      </header>
+    <div class="glass-panel">
+      <article class="article-content">
+        <header class="article-header">
+          <p class="breadcrumb"><a href="./">← กลับไปคลังความรู้</a></p>
+          <p class="section-label">เริ่มต้นจาก 0</p>
+          <h1>วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง (ฟรี) — อธิบายแบบจับมือทำ ไม่ต้องเขียนโค้ด</h1>
+          <p class="meta">LiplnwZa · พฤษภาคม 2026 · อ่าน 6 นาที</p>
+        </header>
+        <p>ในบทความที่แล้ว เราได้ทำความเข้าใจกันไปแล้วว่า <strong>AI Agent</strong> ไม่ใช่แค่ช่องแชทโต้ตอบทั่วไป แต่คือผู้ช่วยที่สามารถคิด วางแผน และลงมือทำงานแทนเราได้จริง คราวนี้เราจะมาลงลึกในภาคปฏิบัติกัน</p>
+        <p>หลายคนมักคิดว่าการจะสร้างระบบ AI ขึ้นมาทำงานร่วมกันเป็นทีม (Multi-Agent System) จะต้องเป็นโปรแกรมเมอร์ที่เขียนโค้ดเก่งๆ หรือต้องใช้เงินทุนมหาศาลเท่านั้น</p>
+        <p>แต่ในปี 2026 นี้ เทคโนโลยี <strong>No-Code AI Platform</strong> ก้าวหน้าไปไกลมาก จนทำให้คุณสามารถตั้งทีม AI ขึ้นมาทำงานให้คุณได้ฟรี ภายในเวลาแค่ <strong>1 ชั่วโมง</strong>! มาลองดูกันครับว่าทำอย่างไร</p>
 
-      <p>ในบทความที่แล้ว เราได้ทำความเข้าใจกันไปแล้วว่า <strong>AI Agent</strong> ไม่ใช่แค่ช่องแชทโต้ตอบทั่วไป แต่คือผู้ช่วยที่สามารถคิด วางแผน และลงมือทำงานแทนเราได้จริง คราวนี้เราจะมาลงลึกในภาคปฏิบัติกัน</p>
+        <h2>ขั้นที่ 0: ปรับ Mindset — เลิกมอง AI เป็นแค่ช่องแชท</h2>
+        <p>ก่อนจะเริ่มจับเวลา 1 ชั่วโมง ให้คุณลบภาพจำเดิมๆ ที่ต้องคอยพิมพ์ถาม-ตอบกับ AI ทีละคำถามออกไปก่อน</p>
+        <p>จงจินตนาการว่าคุณกำลังเปิดบริษัทใหม่ และกำลังจะจ้าง <strong>"พนักงานฝึกงาน"</strong> เข้ามาทำงานพร้อมกัน 2 คน สิ่งที่คุณต้องทำไม่ใช่การสั่งงานไปทีละคำ แต่คือการเขียน <strong>"คู่มือการทำงาน (SOP)"</strong> และบอกว่า "พนักงานคนแรกทำเสร็จแล้ว ให้ส่งต่อให้พนักงานคนที่สองทำอะไรต่อ"</p>
+        <p>ถ้าคิดแบบนี้ได้แล้ว... มาเริ่มจับเวลากันเลย!</p>
 
-      <p>หลายคนมักคิดว่าการจะสร้างระบบ AI ขึ้นมาทำงานร่วมกันเป็นทีม (Multi-Agent System) จะต้องเป็นโปรแกรมเมอร์ที่เขียนโค้ดเก่งๆ หรือต้องใช้เงินทุนมหาศาลเท่านั้น</p>
+        <h2>⏱️ Timeline 1 ชั่วโมง: จับมือสร้างทีม AI ผลิตคอนเทนต์อัตโนมัติ</h2>
+        <p>เพื่อเห็นภาพชัดเจนที่สุด เราจะลองสร้าง <strong>"ทีม AI นักการตลาด"</strong> ที่ประกอบด้วยพนักงาน 2 ตัว:</p>
+        <ul>
+          <li><strong>Agent สายรีเสิร์ช (น้องค้นคว้า):</strong> ทำหน้าที่หาข้อมูลและสรุปเทรนด์ใหม่ๆ จากอินเทอร์เน็ต</li>
+          <li><strong>Agent สายคอนเทนต์ (น้องนักเขียน):</strong> นำข้อมูลสรุปจากตัวแรกมาเขียนเป็นโพสต์ลงโซเชียลมีเดีย</li>
+        </ul>
 
-      <p>แต่ในปี 2026 นี้ เทคโนโลยี <strong>No-Code AI Platform</strong> ก้าวหน้าไปไกลมาก จนทำให้คุณสามารถตั้งทีม AI ขึ้นมาทำงานให้คุณได้ฟรี ภายในเวลาแค่ <strong>1 ชั่วโมง</strong>! มาลองดูกันครับว่าทำอย่างไร</p>
+        <div class="timeline-item">
+          <div class="time">🔹 นาทีที่ 0 – 15</div>
+          <h4>สมัครและเตรียมเครื่องมือ (ฟรี!)</h4>
+          <p>ให้คุณเข้าไปที่แพลตฟอร์มสร้าง AI Agent ยอดนิยมในปัจจุบัน เช่น <strong>Coze.com</strong> หรือ <strong>Dify.ai</strong> แพลตฟอร์มเหล่านี้เปิดให้ใช้งานได้ฟรี และมีหน้าตาอินเทอร์เฟซแบบลากวาง (Visual Workflow) ที่เข้าใจง่ายมาก แค่สมัครสมาชิกด้วย Google Account ก็พร้อมลุย</p>
+        </div>
 
-      <!-- ================================================================ -->
-      <h2>ขั้นที่ 0: ปรับ Mindset — เลิกมอง AI เป็นแค่ช่องแชท</h2>
+        <div class="timeline-item">
+          <div class="time">🔹 นาทีที่ 15 – 40</div>
+          <h4>สร้างพนักงาน AI ตัวที่ 1 และ 2</h4>
+          <p>ภายในแพลตฟอร์ม ให้คุณสร้าง Agent ขึ้นมา 2 ตัว โดยใส่คำสั่ง (Prompt) ที่ชัดเจนลงไป:</p>
+          <p><strong>Agent ตัวที่ 1 (สายรีเสิร์ช):</strong> ใส่คำสั่งว่า <em>"คุณคือผู้เชี่ยวชาญด้านการหาข้อมูล หน้าที่ของคุณคือการใช้เครื่องมือค้นหา (Search Tool) บนอินเทอร์เน็ตเพื่อหาข่าวสารล่าสุดเกี่ยวกับ [หัวข้อที่คุณสนใจ] แล้วสรุปเป็นหัวข้อสำคัญ 3 ข้อ"</em></p>
+          <p><strong>Agent ตัวที่ 2 (สายคอนเทนต์):</strong> ใส่คำสั่งว่า <em>"คุณคือ Content Creator มืออาชีพ หน้าที่ของคุณคือรับข้อมูลสรุป 3 ข้อจาก Agent ตัวที่ 1 แล้วนำมาแต่งเป็นโพสต์สำหรับ Facebook ที่ใช้น้ำเสียงเป็นกันเอง น่าดึงดูด และติดแฮชแท็กที่เกี่ยวข้อง"</em></p>
+        </div>
 
-      <p>ก่อนจะเริ่มจับเวลา 1 ชั่วโมง ให้คุณลบภาพจำเดิมๆ ที่ต้องคอยพิมพ์ถาม-ตอบกับ AI ทีละคำถามออกไปก่อน</p>
+        <div class="timeline-item">
+          <div class="time">🔹 นาทีที่ 40 – 60</div>
+          <h4>เชื่อมต่อท่อส่งงาน (Workflow Connection)</h4>
+          <p>ขั้นตอนนี้คือทีเด็ด! ในหน้าต่าง Workflow ให้คุณลากเส้นเชื่อมโยงจาก:</p>
+          <p style="text-align:center; font-size:1.2rem; margin:1rem 0;">
+            [จุดเริ่มต้น] ➡️ [Agent ตัวที่ 1] ➡️ [Agent ตัวที่ 2]
+          </p>
+          <p>นี่คือการสร้าง <strong>"สายพานการผลิต"</strong> โดยที่มนุษย์อย่างเราแค่พิมพ์หัวข้อที่ต้องการลงไปในจุดเริ่มต้น Agent ตัวที่ 1 จะวิ่งไปหาข้อมูลบนเว็บทันที เมื่อได้ผลสรุป มันจะส่งข้อมูลนั้นเข้าปาก Agent ตัวที่ 2 โดยอัตโนมัติ เพื่อให้ Agent ตัวที่ 2 เขียนโพสต์ออกมาให้เราทันทีภายในไม่กี่วินาที!</p>
+        </div>
 
-      <p>จงจินตนาการว่าคุณกำลังเปิดบริษัทใหม่ และกำลังจะจ้าง <strong>"พนักงานฝึกงาน"</strong> เข้ามาทำงานพร้อมกัน 2 คน สิ่งที่คุณต้องทำไม่ใช่การสั่งงานไปทีละคำ แต่คือการเขียน <strong>"คู่มือการทำงาน (SOP)"</strong> และบอกว่า "พนักงานคนแรกทำเสร็จแล้ว ให้ส่งต่อให้พนักงานคนที่สองทำอะไรต่อ"</p>
+        <h2>🚀 ผลลัพธ์: คุณได้ "ทีมงาน" ที่ทำงาน 24 ชั่วโมง โดยไม่มีค่าแรง</h2>
+        <p>หลังผ่านไป 1 ชั่วโมง เมื่อคุณกดปุ่ม <strong>Publish</strong> คุณจะได้ลิงก์ส่วนตัวที่พร้อมใช้งาน เพียงแค่คุณพิมพ์คำว่า <em>"อัปเดตเทรนด์ AI สัปดาห์นี้"</em> ทีม AI สองตัวของคุณจะเริ่มทำงานประสานกันทันที สิ่งที่คุณต้องทำเหลือแค่การตรวจทานความถูกต้องก่อนนำไปโพสต์จริง</p>
+        <p>นี่คือพลังของการเปลี่ยนผ่านจากยุค <strong>Generative AI</strong> (แค่สร้างตามสั่ง) ไปสู่ยุค <strong>Agentic AI</strong> (ทำงานแทนเป็นระบบ) คล้ายกับแนวคิดหลักของผมที่ว่า <strong>"ผมคนเดียวกับ AI 6 ตัว"</strong> ที่สามารถสเกลพลังการทำงานของคนๆ เดียวให้เท่ากับบริษัทขนาดย่อมได้</p>
 
-      <p>ถ้าคิดแบบนี้ได้แล้ว... มาเริ่มจับเวลากันเลย!</p>
+        <h2>💡 ก้าวไปอีกขั้นกับระบบที่ซับซ้อนกว่าเดิม</h2>
+        <p>สิ่งที่เราทำใน 1 ชั่วโมงนี้เป็นเพียง <strong>"น้ำจิ้ม"</strong> สำหรับระบบระดับเริ่มต้นเท่านั้น ในความเป็นจริง ทีม AI สามารถขยายขนาดให้ใหญ่ขึ้น ซับซ้อนขึ้น เช่น เชื่อมต่อฐานข้อมูลลูกค้า (CRM), ส่งอีเมลหาลูกค้าอัตโนมัติ หรือแม้กระทั่งตรวจเช็คสต็อกสินค้าและทำบัญชีเบื้องต้นได้</p>
 
-      <!-- ================================================================ -->
-      <h2>⏱️ Timeline 1 ชั่วโมง: จับมือสร้างทีม AI ผลิตคอนเทนต์อัตโนมัติ</h2>
+        <div class="cta-box">
+          <h3>📢 สำหรับเจ้าของธุรกิจ หรือองค์กรที่ต้องการสเกลงาน</h3>
+          <p>หากคุณเห็นโอกาสแต่ไม่มีเวลาสร้างเอง หรือต้องการระบบทีม AI ที่ปรับแต่งเฉพาะ (Custom Multi-Agent System) เพื่อลดต้นทุนและเพิ่มประสิทธิภาพการทำงานในองค์กรของคุณอย่างจริงจัง...</p>
+          <p style="margin-bottom:0;">สามารถทักมาพูดคุย ปรึกษาไอเดีย หรือจ้างงานฟรีแลนซ์กับผมได้โดยตรงที่</p>
+          <p style="font-size:1.1rem; margin-top:0.5rem;"><a href="../contact.html">📬 หน้าติดต่อ (Contact) →</a></p>
+        </div>
 
-      <p>เพื่อเห็นภาพชัดเจนที่สุด เราจะลองสร้าง <strong>"ทีม AI นักการตลาด"</strong> ที่ประกอบด้วยพนักงาน 2 ตัว:</p>
+        <hr>
 
-      <ul>
-        <li><strong>Agent สายรีเสิร์ช (น้องค้นคว้า):</strong> ทำหน้าที่หาข้อมูลและสรุปเทรนด์ใหม่ๆ จากอินเทอร์เน็ต</li>
-        <li><strong>Agent สายคอนเทนต์ (น้องนักเขียน):</strong> นำข้อมูลสรุปจากตัวแรกมาเขียนเป็นโพสต์ลงโซเชียลมีเดีย</li>
-      </ul>
+        <div class="highlight-box">
+          <strong>📚 อ่านต่อ:</strong><br>
+          👉 <a href="./what-is-ai-agent.html">AI Agent คืออะไร?</a> — ปูพื้นฐานก่อนเริ่ม<br>
+          👉 <a href="./build-ai-team-4-months.html">วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</a> — จากศูนย์จนทำงานแทนคุณได้
+        </div>
 
-      <div class="timeline-item">
-        <div class="time">🔹 นาทีที่ 0 – 15</div>
-        <h4>สมัครและเตรียมเครื่องมือ (ฟรี!)</h4>
-        <p>ให้คุณเข้าไปที่แพลตฟอร์มสร้าง AI Agent ยอดนิยมในปัจจุบัน เช่น <strong>Coze.com</strong> หรือ <strong>Dify.ai</strong> แพลตฟอร์มเหล่านี้เปิดให้ใช้งานได้ฟรี และมีหน้าตาอินเทอร์เฟซแบบลากวาง (Visual Workflow) ที่เข้าใจง่ายมาก แค่สมัครสมาชิกด้วย Google Account ก็พร้อมลุย</p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="time">🔹 นาทีที่ 15 – 40</div>
-        <h4>สร้างพนักงาน AI ตัวที่ 1 และ 2</h4>
-        <p>ภายในแพลตฟอร์ม ให้คุณสร้าง Agent ขึ้นมา 2 ตัว โดยใส่คำสั่ง (Prompt) ที่ชัดเจนลงไป:</p>
-        <p><strong>Agent ตัวที่ 1 (สายรีเสิร์ช):</strong> ใส่คำสั่งว่า <em>"คุณคือผู้เชี่ยวชาญด้านการหาข้อมูล หน้าที่ของคุณคือการใช้เครื่องมือค้นหา (Search Tool) บนอินเทอร์เน็ตเพื่อหาข่าวสารล่าสุดเกี่ยวกับ [หัวข้อที่คุณสนใจ] แล้วสรุปเป็นหัวข้อสำคัญ 3 ข้อ"</em></p>
-        <p><strong>Agent ตัวที่ 2 (สายคอนเทนต์):</strong> ใส่คำสั่งว่า <em>"คุณคือ Content Creator มืออาชีพ หน้าที่ของคุณคือรับข้อมูลสรุป 3 ข้อจาก Agent ตัวที่ 1 แล้วนำมาแต่งเป็นโพสต์สำหรับ Facebook ที่ใช้น้ำเสียงเป็นกันเอง น่าดึงดูด และติดแฮชแท็กที่เกี่ยวข้อง"</em></p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="time">🔹 นาทีที่ 40 – 60</div>
-        <h4>เชื่อมต่อท่อส่งงาน (Workflow Connection)</h4>
-        <p>ขั้นตอนนี้คือทีเด็ด! ในหน้าต่าง Workflow ให้คุณลากเส้นเชื่อมโยงจาก:</p>
-        <p style="text-align:center; font-size:1.2rem; margin:1rem 0;">
-          [จุดเริ่มต้น] ➡️ [Agent ตัวที่ 1] ➡️ [Agent ตัวที่ 2]
+        <p>
+          <strong>📥 อยากอ่านแบบสั้น?</strong>
+          <a href="../downloads/setup-first-ai-team-summary.html">ดาวน์โหลด HTML สรุป 1 หน้า</a>
         </p>
-        <p>นี่คือการสร้าง <strong>"สายพานการผลิต"</strong> โดยที่มนุษย์อย่างเราแค่พิมพ์หัวข้อที่ต้องการลงไปในจุดเริ่มต้น Agent ตัวที่ 1 จะวิ่งไปหาข้อมูลบนเว็บทันที เมื่อได้ผลสรุป มันจะส่งข้อมูลนั้นเข้าปาก Agent ตัวที่ 2 โดยอัตโนมัติ เพื่อให้ Agent ตัวที่ 2 เขียนโพสต์ออกมาให้เราทันทีภายในไม่กี่วินาที!</p>
-      </div>
-
-      <!-- ================================================================ -->
-      <h2>🚀 ผลลัพธ์: คุณได้ "ทีมงาน" ที่ทำงาน 24 ชั่วโมง โดยไม่มีค่าแรง</h2>
-
-      <p>หลังผ่านไป 1 ชั่วโมง เมื่อคุณกดปุ่ม <strong>Publish</strong> คุณจะได้ลิงก์ส่วนตัวที่พร้อมใช้งาน เพียงแค่คุณพิมพ์คำว่า <em>"อัปเดตเทรนด์ AI สัปดาห์นี้"</em> ทีม AI สองตัวของคุณจะเริ่มทำงานประสานกันทันที สิ่งที่คุณต้องทำเหลือแค่การตรวจทานความถูกต้องก่อนนำไปโพสต์จริง</p>
-
-      <p>นี่คือพลังของการเปลี่ยนผ่านจากยุค <strong>Generative AI</strong> (แค่สร้างตามสั่ง) ไปสู่ยุค <strong>Agentic AI</strong> (ทำงานแทนเป็นระบบ) คล้ายกับแนวคิดหลักของผมที่ว่า <strong>"ผมคนเดียวกับ AI 6 ตัว"</strong> ที่สามารถสเกลพลังการทำงานของคนๆ เดียวให้เท่ากับบริษัทขนาดย่อมได้</p>
-
-      <!-- ================================================================ -->
-      <h2>💡 ก้าวไปอีกขั้นกับระบบที่ซับซ้อนกว่าเดิม</h2>
-
-      <p>สิ่งที่เราทำใน 1 ชั่วโมงนี้เป็นเพียง <strong>"น้ำจิ้ม"</strong> สำหรับระบบระดับเริ่มต้นเท่านั้น ในความเป็นจริง ทีม AI สามารถขยายขนาดให้ใหญ่ขึ้น ซับซ้อนขึ้น เช่น เชื่อมต่อฐานข้อมูลลูกค้า (CRM), ส่งอีเมลหาลูกค้าอัตโนมัติ หรือแม้กระทั่งตรวจเช็คสต็อกสินค้าและทำบัญชีเบื้องต้นได้</p>
-
-      <!-- ================================================================ -->
-      <div class="cta-box">
-        <h3>📢 สำหรับเจ้าของธุรกิจ หรือองค์กรที่ต้องการสเกลงาน</h3>
-        <p>หากคุณเห็นโอกาสแต่ไม่มีเวลาสร้างเอง หรือต้องการระบบทีม AI ที่ปรับแต่งเฉพาะ (Custom Multi-Agent System) เพื่อลดต้นทุนและเพิ่มประสิทธิภาพการทำงานในองค์กรของคุณอย่างจริงจัง...</p>
-        <p style="margin-bottom:0;">สามารถทักมาพูดคุย ปรึกษาไอเดีย หรือจ้างงานฟรีแลนซ์กับผมได้โดยตรงที่</p>
-        <p style="font-size:1.1rem; margin-top:0.5rem;"><a href="../contact.html" style="color:var(--color-accent); font-weight:700;">📬 หน้าติดต่อ (Contact) →</a></p>
-      </div>
-
-      <hr style="margin: 3rem 0;">
-
-      <div class="highlight-box">
-        <strong>📚 อ่านต่อ:</strong><br>
-        👉 <a href="./what-is-ai-agent.html" style="color:var(--color-accent);">AI Agent คืออะไร?</a> — ปูพื้นฐานก่อนเริ่ม<br>
-        👉 <a href="./build-ai-team-4-months.html" style="color:var(--color-accent);">วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</a> — จากศูนย์จนทำงานแทนคุณได้
-      </div>
-
-      <p>
-        <strong>📥 อยากอ่านแบบสั้น?</strong>
-        <a href="../downloads/setup-first-ai-team-summary.html">ดาวน์โหลด HTML สรุป 1 หน้า</a>
-      </p>
-      <p>
-        <strong>🎧 ฟังแบบ Podcast:</strong> เร็วๆ นี้ — Audio Overview จาก NotebookLM
-      </p>
-      <p>
-        <strong>💬 มีคำถาม?</strong>
-        <a href="../contact.html">ส่งข้อความหาผม</a> — ยินดีตอบทุกเรื่อง
-      </p>
-    </article>
-  </main>
-
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__content">
-        <p>© 2026 LiplnwZa — Built with AI Team</p>
-      </div>
+        <p>
+          <strong>🎧 ฟังแบบ Podcast:</strong> เร็วๆ นี้ — Audio Overview จาก NotebookLM
+        </p>
+        <p>
+          <strong>💬 มีคำถาม?</strong>
+          <a href="../contact.html">ส่งข้อความหาผม</a> — ยินดีตอบทุกเรื่อง
+        </p>
+      </article>
     </div>
-  </footer>
+  </main>
+  {{> footer}}
+  <script type="module" src="/src/knowledge-bg.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

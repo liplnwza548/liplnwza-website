@@ -3,64 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>สร้างทีม AI 6 ตัวใน 4 เดือน — สรุป 1 หน้า</title>
+  <title>สร้างทีม AI 6 ตัวใน 4 เดือน — สรุป 1 หน้า | LiplnwZa</title>
   <style>
-    body { max-width: 700px; margin: 2rem auto; padding: 0 1.5rem; font-family: 'IBM Plex Sans Thai', sans-serif; line-height: 1.8; color: #1a1a2e; background: #fff; }
-    h1 { color: #0A8F8F; font-size: 1.6rem; border-bottom: 2px solid #0A8F8F; padding-bottom: 0.5rem; }
-    h2 { color: #0A8F8F; margin-top: 1.8rem; font-size: 1.2rem; }
-    ul { padding-left: 1.2rem; }
-    li { margin-bottom: 0.3rem; }
-    .tagline { text-align: center; color: #666; font-style: italic; margin: 1.5rem 0; }
-    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.85rem; color: #888; text-align: center; }
-    a { color: #0A8F8F; }
+    :root {
+      --bg: #05080D; --surface: rgba(13,17,23,0.85); --text: #E6EDF3;
+      --text2: #8B949E; --accent: #2DD4BF; --accent-glow: rgba(45,212,191,0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'IBM Plex Sans Thai', 'Inter', sans-serif;
+      line-height: 1.8; min-height: 100vh;
+    }
+    #knowledge-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+    .glass-panel {
+      background: var(--surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(45,212,191,0.12); border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+      max-width: 720px; margin: 80px auto 40px; padding: 2.5rem 2rem; position: relative; z-index: 10;
+    }
+    .glass-panel::before { content:''; position:absolute; top:0;left:0;right:0; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(45,212,191,0.5) 20%, rgba(45,212,191,0.8) 50%, rgba(45,212,191,0.5) 80%, transparent);
+    }
+    h1 { color: var(--accent); font-size: 1.4rem; text-align: center; margin-bottom: 0.3rem; text-shadow: 0 0 12px rgba(45,212,191,0.2); }
+    .subtitle { text-align: center; color: var(--text2); font-size: 0.9rem; font-style: italic; margin-bottom: 2rem; }
+    h2 { color: var(--accent); font-size: 1.1rem; margin-top: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.3rem; }
+    ul, ol { padding-left: 1.2rem; }
+    li { margin-bottom: 0.3rem; color: var(--text2); }
+    li strong { color: var(--text); }
+    .footer { text-align: center; font-size: 0.8rem; color: var(--text2); margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    a { color: var(--accent); }
+    .nav-mini { text-align: center; margin-bottom: 0.5rem; }
+    .nav-mini a { font-size: 0.85rem; color: var(--text2); text-decoration: none; }
+    .nav-mini a:hover { color: var(--accent); }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</h1>
-  <p class="tagline">"ผมไม่ได้เก่ง AI — ผมแค่ขี้เกียจพอที่จะสอนให้มันทำงานแทน"</p>
+  <canvas id="knowledge-canvas"></canvas>
 
-  <h2>Month 1 — ผู้ช่วยคนแรก (Hermes)</h2>
-  <ul>
-    <li>เริ่มจาก AI 1 ตัวที่อยู่ด้วยตลอดเวลา</li>
-    <li>คุยผ่าน Telegram / Terminal ด้วยภาษาไทย</li>
-    <li>จัดการไฟล์, เขียนสรุป, ส่งเอกสาร HTML</li>
-    <li>กลายเป็น "เลขาส่วนตัว AI"</li>
-  </ul>
+  <div class="glass-panel">
+    <p class="nav-mini">
+      <a href="../knowledge/">← กลับคลังความรู้</a>
+      &nbsp;·&nbsp;
+      <a href="https://liplnwza.vercel.app/knowledge/build-ai-team-4-months.html">📄 อ่านฉบับเต็ม</a>
+    </p>
+    <h1>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</h1>
+    <p class="subtitle">"ผมไม่ได้เก่ง AI — ผมแค่ขี้เกียจพอที่จะสอนให้มันทำงานแทน"</p>
 
-  <h2>Month 2 — นักพัฒนา (Claude Code + Codex)</h2>
-  <ul>
-    <li>บอกแค่อยากได้อะไร — AI เขียนโค้ดให้ทั้งโปรเจกต์</li>
-    <li>ทำ frontend + backend พร้อมกัน</li>
-    <li>ไม่ต้องเขียนโค้ดเป็น — แค่อธิบาย spec ให้ชัด</li>
-  </ul>
+    <h2>Month 1 — ผู้ช่วยคนแรก (Hermes)</h2>
+    <ul>
+      <li>เริ่มจาก AI 1 ตัวที่อยู่ด้วยตลอดเวลา</li>
+      <li>คุยผ่าน Telegram / Terminal ด้วยภาษาไทย</li>
+      <li>จัดการไฟล์, เขียนสรุป, ส่งเอกสาร HTML</li>
+      <li>กลายเป็น <strong>"เลขาส่วนตัว AI"</strong></li>
+    </ul>
 
-  <h2>Month 3 — ตัวเสริม (Gemini + AGY)</h2>
-  <ul>
-    <li>Gemini: deep research, อ่านเอกสารยาวๆ, สรุป</li>
-    <li>AGY: process automation, เชื่อม API, แจ้งเตือน</li>
-  </ul>
+    <h2>Month 2 — นักพัฒนา (Claude Code + Codex)</h2>
+    <ul>
+      <li>บอกแค่อยากได้อะไร — AI เขียนโค้ดให้ทั้งโปรเจกต์</li>
+      <li>ทำ frontend + backend พร้อมกัน</li>
+      <li>ไม่ต้องเขียนโค้ดเป็น — <strong>แค่อธิบาย spec ให้ชัด</strong></li>
+    </ul>
 
-  <h2>Month 4 — Team OS</h2>
-  <ul>
-    <li>Agent-Vault: ระบบแชร์ข้อมูลระหว่าง AI ทุกตัว</li>
-    <li>AGENTS.md + WORKSPACE.md + Handoffs + Projects</li>
-    <li>เปลี่ยน AI จาก "ผู้ช่วย" → "ทีม"</li>
-  </ul>
+    <h2>Month 3 — ตัวเสริม (Gemini + AGY)</h2>
+    <ul>
+      <li><strong>Gemini:</strong> deep research, อ่านเอกสารยาวๆ, สรุป</li>
+      <li><strong>AGY:</strong> process automation, เชื่อม API, แจ้งเตือน</li>
+    </ul>
 
-  <h2>สิ่งที่ต้องมี (สรุป)</h2>
-  <ol>
-    <li>AI ผู้ช่วยหลัก 1 ตัว</li>
-    <li>AI developer 1-2 ตัว</li>
-    <li>AI researcher 1 ตัว</li>
-    <li>AI automation 1 ตัว</li>
-    <li>Team OS (ระบบกลาง)</li>
-    <li>Obsidian Vault (ความรู้ระยะยาว)</li>
-  </ol>
+    <h2>Month 4 — Team OS</h2>
+    <ul>
+      <li>Agent-Vault: ระบบแชร์ข้อมูลระหว่าง AI ทุกตัว</li>
+      <li>AGENTS.md + WORKSPACE.md + Handoffs + Projects</li>
+      <li>เปลี่ยน AI จาก "ผู้ช่วย" → <strong>"ทีม"</strong></li>
+    </ul>
 
-  <p>รวม ~4 เดือน จากศูนย์ — พัฒนาเพิ่มทุกวัน</p>
+    <h2>สิ่งที่ต้องมี (สรุป)</h2>
+    <ol>
+      <li>AI ผู้ช่วยหลัก 1 ตัว</li>
+      <li>AI developer 1-2 ตัว</li>
+      <li>AI researcher 1 ตัว</li>
+      <li>AI automation 1 ตัว</li>
+      <li>Team OS (ระบบกลาง)</li>
+      <li>Obsidian Vault (ความรู้ระยะยาว)</li>
+    </ol>
+    <p style="text-align:center;margin-top:1rem;">รวม ~4 เดือน จากศูนย์ — พัฒนาเพิ่มทุกวัน</p>
 
-  <div class="footer">
-    <p>LiplnwZa · พฤษภาคม 2026 · <a href="https://liplnwza548.github.io/liplnwza-website/">liplnwza548.github.io/liplnwza-website</a></p>
+    <div class="footer">
+      <p>LiplnwZa · พฤษภาคม 2026 · <a href="https://liplnwza.vercel.app/">liplnwza.vercel.app</a></p>
+    </div>
   </div>
+
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    const canvas = document.getElementById('knowledge-canvas');
+    if (!canvas) throw new Error('no canvas');
+    const W = () => window.innerWidth, H = () => window.innerHeight;
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x05080D, 0.03);
+    const cam = new THREE.PerspectiveCamera(60, W()/H(), 0.1, 100);
+    cam.position.z = 8;
+    const r = new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
+    r.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
+    r.setSize(W(),H()); r.setClearColor(0x05080D,1);
+    const count = (W()<768)?2000:8000;
+    const g = new THREE.BufferGeometry();
+    const pos = new Float32Array(count*3);
+    for(let i=0;i<count;i++){const u=Math.random(),v=Math.random(),theta=u*2*Math.PI,phi=Math.acos(2*v-1),rad=2.5+Math.random()*3.5;pos[i*3]=rad*Math.sin(phi)*Math.cos(theta);pos[i*3+1]=rad*Math.sin(phi)*Math.sin(theta);pos[i*3+2]=rad*Math.cos(phi);}
+    g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    const m = new THREE.ShaderMaterial({uniforms:{uTime:{value:0},uPixelRatio:{value:Math.min(window.devicePixelRatio,1.5)},uColor:{value:new THREE.Color(0.176,0.831,0.749)}},vertexShader:'uniform float uTime;uniform float uPixelRatio;varying vec3 vP;void main(){vec3 p=position;p.x+=sin(p.y*0.5+uTime*0.2)*0.12;p.y+=cos(p.x*0.4+uTime*0.25)*0.12;p.z+=sin(p.z*0.6+uTime*0.2)*0.12;vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=(22.0*uPixelRatio)/-mv.z;vP=p;}',fragmentShader:'uniform vec3 uColor;varying vec3 vP;void main(){float d=distance(gl_PointCoord,vec2(0.5));if(d>0.5)discard;float a=1.0-(d*2.0);a=pow(a,1.5);gl_FragColor=vec4(uColor,a*0.65);}',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+    const pts = new THREE.Points(g,m); scene.add(pts);
+    let af=null,vis=true,clk=new THREE.Clock();
+    function render(){if(!r)return;const t=clk.getElapsedTime();m.uniforms.uTime.value=t;pts.rotation.y=t*0.015;pts.rotation.x=Math.sin(t*0.08)*0.08;r.render(scene,cam);}
+    function loop(){render();af=requestAnimationFrame(loop);}
+    function start(){if(af!==null)return;clk.getDelta();loop();}
+    function stop(){if(af!==null){cancelAnimationFrame(af);af=null;}}
+    window.addEventListener('resize',()=>{cam.aspect=W()/H();cam.updateProjectionMatrix();r.setSize(W(),H());r.setPixelRatio(Math.min(window.devicePixelRatio,1.5));m.uniforms.uPixelRatio.value=Math.min(window.devicePixelRatio,1.5);});
+    document.addEventListener('visibilitychange',()=>{vis=!document.hidden;vis?start():stop();});
+    start(); render();
+  </script>
 </body>
 </html>

@@ -1602,3 +1602,391 @@ body[data-page="home"] .nav:not(.nav--scrolled):not(.nav--open) .nav__toggle spa
     margin-left: 0;
   }
 }
+
+/* ============================================
+   LiplnwZa — Cyberpunk / Odyssey 3D Theme
+   Triggered by: <body data-theme="cyber">
+   Dark glassmorphic knowledge hub with neon glow
+   ============================================ */
+
+[data-theme="cyber"] {
+  --color-bg: #05080D;
+  --color-surface: rgba(22, 27, 34, 0.85);
+  --color-surface-hover: rgba(28, 34, 42, 0.9);
+  --color-text: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-text-tertiary: #6E7681;
+  --color-accent: #2DD4BF;
+  --color-accent-hover: #5EEAD4;
+  --color-accent-light: rgba(45, 212, 191, 0.10);
+  --color-accent-glow: rgba(45, 212, 191, 0.18);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-white: #FFFFFF;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* --- Glassmorphic Article Container --- */
+[data-theme="cyber"] .glass-panel {
+  background: rgba(13, 17, 23, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  padding: var(--space-10) var(--space-8);
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Neon glow accent line on glass panels */
+[data-theme="cyber"] .glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(45, 212, 191, 0.5) 20%,
+    rgba(45, 212, 191, 0.8) 50%,
+    rgba(45, 212, 191, 0.5) 80%,
+    transparent 100%
+  );
+}
+
+/* --- Page Content Wrapper (cyber) --- */
+[data-theme="cyber"] .page-content {
+  padding-top: calc(var(--nav-height) + var(--space-10));
+  padding-bottom: var(--space-10);
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Navigation (cyber dark glass) --- */
+[data-theme="cyber"] .nav {
+  background-color: rgba(5, 8, 13, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.10);
+}
+
+[data-theme="cyber"] .nav--scrolled {
+  border-bottom-color: rgba(45, 212, 191, 0.20);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="cyber"] .nav__logo {
+  color: var(--color-accent);
+}
+[data-theme="cyber"] .nav__logo:hover {
+  color: var(--color-accent-hover);
+  text-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
+}
+
+[data-theme="cyber"] .nav__link {
+  color: var(--color-text-secondary);
+}
+[data-theme="cyber"] .nav__link:hover,
+[data-theme="cyber"] .nav__link--active {
+  color: var(--color-accent);
+  background-color: rgba(45, 212, 191, 0.08);
+}
+[data-theme="cyber"] .nav__link--cta {
+  color: var(--color-accent);
+  background-color: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
+[data-theme="cyber"] .nav__link--cta:hover {
+  color: #05080D;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 16px rgba(45, 212, 191, 0.4);
+}
+
+/* --- Footer (cyber) --- */
+[data-theme="cyber"] .footer {
+  border-top: 1px solid rgba(45, 212, 191, 0.10);
+  background: rgba(5, 8, 13, 0.60);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 10;
+}
+[data-theme="cyber"] .footer__copy {
+  color: var(--color-text-tertiary);
+}
+
+/* --- Section Label (cyber) --- */
+[data-theme="cyber"] .section-label {
+  color: var(--color-accent);
+  text-shadow: 0 0 12px rgba(45, 212, 191, 0.3);
+}
+
+/* --- Section Title (cyber) --- */
+[data-theme="cyber"] .section-title {
+  color: var(--color-text);
+}
+
+/* --- Knowledge Hub Hero --- */
+[data-theme="cyber"] .knowledge-hero {
+  text-align: center;
+  padding: var(--space-12) 0 var(--space-8);
+  position: relative;
+  z-index: 10;
+}
+[data-theme="cyber"] .knowledge-hero h1 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent), #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-4);
+}
+[data-theme="cyber"] .hero-lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* --- Article Typography (cyber) --- */
+[data-theme="cyber"] .article-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+[data-theme="cyber"] .article-header h1 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height: 1.35;
+}
+[data-theme="cyber"] .article-header .meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+[data-theme="cyber"] .article-header .breadcrumb {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-3);
+}
+[data-theme="cyber"] .article-header .breadcrumb a {
+  color: var(--color-accent);
+  transition: color var(--transition-fast);
+}
+[data-theme="cyber"] .article-header .breadcrumb a:hover {
+  color: var(--color-accent-hover);
+}
+
+[data-theme="cyber"] .article-content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-text);
+}
+[data-theme="cyber"] .article-content h2 {
+  color: var(--color-accent);
+  margin-top: var(--space-10);
+  font-size: var(--text-2xl);
+  text-shadow: 0 0 8px rgba(45, 212, 191, 0.15);
+}
+[data-theme="cyber"] .article-content h3 {
+  margin-top: var(--space-8);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+}
+[data-theme="cyber"] .article-content p {
+  margin-bottom: var(--space-6);
+}
+[data-theme="cyber"] .article-content ul,
+[data-theme="cyber"] .article-content ol {
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+}
+[data-theme="cyber"] .article-content li {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+}
+[data-theme="cyber"] .article-content strong {
+  color: var(--color-accent);
+}
+[data-theme="cyber"] .article-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+[data-theme="cyber"] .article-content a:hover {
+  color: var(--color-accent-hover);
+}
+[data-theme="cyber"] .article-content blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+[data-theme="cyber"] .article-content hr {
+  border: none;
+  border-top: 1px solid rgba(45, 212, 191, 0.15);
+  margin: var(--space-10) 0;
+}
+
+/* --- Highlight Box (cyber) --- */
+[data-theme="cyber"] .highlight-box {
+  background: rgba(45, 212, 191, 0.06);
+  border: 1px solid rgba(45, 212, 191, 0.20);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin: var(--space-10) 0;
+}
+[data-theme="cyber"] .highlight-box strong {
+  color: var(--color-accent);
+}
+
+/* --- CTA Box (cyber) --- */
+[data-theme="cyber"] .cta-box {
+  background: rgba(45, 212, 191, 0.08);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin: var(--space-10) 0;
+  text-align: center;
+}
+[data-theme="cyber"] .cta-box h3 {
+  color: var(--color-accent);
+  margin-top: 0;
+}
+
+/* --- Timeline Item (cyber) --- */
+[data-theme="cyber"] .timeline-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-4) 0;
+}
+[data-theme="cyber"] .timeline-item .time {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+}
+[data-theme="cyber"] .timeline-item h4 {
+  margin: var(--space-2) 0;
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+[data-theme="cyber"] .timeline-item p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* --- Knowledge Card Grid (index page) --- */
+[data-theme="cyber"] .knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+[data-theme="cyber"] .knowledge-card {
+  background: rgba(13, 17, 23, 0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 212, 191, 0.10);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+  text-decoration: none !important;
+  color: var(--color-text);
+  display: block;
+}
+[data-theme="cyber"] .knowledge-card:hover {
+  border-color: rgba(45, 212, 191, 0.30);
+  box-shadow: 0 0 24px rgba(45, 212, 191, 0.08);
+  transform: translateY(-2px);
+  background: rgba(13, 17, 23, 0.85);
+}
+[data-theme="cyber"] .knowledge-card .card-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+[data-theme="cyber"] .knowledge-card h2 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height: 1.35;
+}
+[data-theme="cyber"] .knowledge-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+[data-theme="cyber"] .knowledge-card .card-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* --- Resource Grid (download pages) --- */
+[data-theme="cyber"] .resource-item {
+  background: rgba(45, 212, 191, 0.05);
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-3) 0;
+  transition: all var(--transition-fast);
+}
+[data-theme="cyber"] .resource-item:hover {
+  border-color: rgba(45, 212, 191, 0.30);
+  background: rgba(45, 212, 191, 0.08);
+}
+[data-theme="cyber"] .resource-item h3 {
+  color: var(--color-accent);
+  font-size: var(--text-base);
+  margin: 0;
+}
+[data-theme="cyber"] .resource-item p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  margin: var(--space-1) 0 0;
+}
+
+/* --- Canvas Background --- */
+[data-theme="cyber"] #knowledge-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- Responsive (cyber) --- */
+@media (max-width: 768px) {
+  [data-theme="cyber"] .glass-panel {
+    padding: var(--space-6) var(--space-5);
+    margin: 0 var(--space-3);
+    border-radius: var(--radius-md);
+  }
+  [data-theme="cyber"] .knowledge-hero h1 {
+    font-size: var(--text-2xl);
+  }
+  [data-theme="cyber"] .knowledge-grid {
+    grid-template-columns: 1fr;
+  }
+  [data-theme="cyber"] .article-header h1 {
+    font-size: var(--text-2xl);
+  }
+}
