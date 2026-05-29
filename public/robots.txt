@@ -1,4 +1,8 @@
+# robots.txt สำหรับ LiplnwZa Personal Website
+# อนุญาตให้ทุก search engine เข้าถึงทุกหน้า
+
 User-agent: *
 Allow: /
 
+# บอกทางไป sitemap
 Sitemap: https://liplnwza.vercel.app/sitemap.xml
