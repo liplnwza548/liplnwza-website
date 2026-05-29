@@ -51,6 +51,40 @@ a { color: var(--accent); }
 .nav-mini { text-align: center; margin-bottom: 0.5rem; }
 .nav-mini a { font-size: 0.85rem; color: var(--text2); text-decoration: none; }
 .nav-mini a:hover { color: var(--accent); }
+
+/* ═══════ GLASSMORPHIC GDOCS BUTTON ═══════ */
+.gdoc-button-wrap {
+text-align: center; margin: 1.5rem 0;
+}
+.gdoc-button {
+display: inline-flex; align-items: center; gap: 0.5rem;
+padding: 0.7rem 1.8rem;
+background: rgba(45,212,191,0.08);
+backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(45,212,191,0.25);
+border-radius: 12px;
+color: var(--accent); text-decoration: none;
+font-weight: 600; font-size: 0.9rem;
+letter-spacing: 0.01em;
+transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+box-shadow: 0 0 20px rgba(45,212,191,0.05), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.gdoc-button:hover {
+background: rgba(45,212,191,0.15);
+border-color: rgba(45,212,191,0.45);
+box-shadow: 0 0 30px rgba(45,212,191,0.12), 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+transform: translateY(-1px);
+}
+.gdoc-button .gdoc-icon { font-size: 1.2rem; line-height: 1; }
+
+
+/* ═══════ View Transitions (Page Morph) ═══════ */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 300ms ease-out both fade-out; }
+::view-transition-new(root) { animation: 400ms ease-in both fade-in; }
+@keyframes fade-out { to { opacity: 0; filter: blur(4px); } }
+@keyframes fade-in { from { opacity: 0; filter: blur(2px); } to { opacity: 1; filter: blur(0); } }
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +99,7 @@ a { color: var(--accent); }
 &nbsp;·&nbsp;
 <a href="https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html">📄 อ่านฉบับเต็ม</a>
 </p>
-<h1>🤖 วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง — สรุป 1 หน้า</h1>
+<h1 data-scramble>🤖 วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง — สรุป 1 หน้า</h1>
 <p class="subtitle">อ่านเต็ม: <a href="https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html">liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html</a></p>
 
 <h2>ขั้นที่ 0: ปรับ Mindset</h2>
@@ -113,49 +147,127 @@ a { color: var(--accent); }
 &nbsp;·&nbsp;
 <a href="https://liplnwza.vercel.app/knowledge/build-ai-team-4-months.html">สร้างทีม AI 6 ตัว</a>
 </p>
-<div class="slide-embed">
-    <div class="slide-icon">📊</div>
-    <span class="slide-label">Presentation Slides</span>
-    <span class="slide-title">Slide Deck — Coming Soon</span>
-    <span class="slide-badge">เร็วๆ นี้</span>
-  </div>
+
+<span class="slide-label">Presentation Slides</span>
+<span class="slide-title">Slide Deck — Coming Soon</span>
+<span class="slide-badge">เร็วๆ นี้</span>
+</div>
+
+<div class="gdoc-button-wrap">
+<a href="https://liplnwza.vercel.app/knowledge/setup-first-ai-team-one-hour.html" class="gdoc-button" target="_blank" rel="noopener">
+<span class="gdoc-icon">📖</span> เปิดอ่านคู่มือฉบับเต็มบน Google Docs
+</a>
+</div>
 
 <div class="footer">© 2026 LiplnwZa · Built with AI Team</div>
 </div>
 
-<script type="importmap">
-{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
-</script>
-<script type="module">
-import * as THREE from 'three';
-const canvas = document.getElementById('knowledge-canvas');
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
-function init(){
-if (!canvas) return;
-const W = () => window.innerWidth, H = () => window.innerHeight;
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x05080D, 0.03);
-const cam = new THREE.PerspectiveCamera(60, W()/H(), 0.1, 100);
-cam.position.z = 8;
-const r = new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
-r.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
-r.setSize(W(),H()); r.setClearColor(0x05080D,1);
-const count = (W()<768)?2000:8000;
-const g = new THREE.BufferGeometry();
-const pos = new Float32Array(count*3);
-for(let i=0;i<count;i++){const u=Math.random(),v=Math.random(),theta=u*2*Math.PI,phi=Math.acos(2*v-1),rad=2.5+Math.random()*3.5;pos[i*3]=rad*Math.sin(phi)*Math.cos(theta);pos[i*3+1]=rad*Math.sin(phi)*Math.sin(theta);pos[i*3+2]=rad*Math.cos(phi);}
-g.setAttribute('position',new THREE.BufferAttribute(pos,3));
-const m = new THREE.ShaderMaterial({uniforms:{uTime:{value:0},uPixelRatio:{value:Math.min(window.devicePixelRatio,1.5)},uColor:{value:new THREE.Color(0.176,0.831,0.749)}},vertexShader:'uniform float uTime;uniform float uPixelRatio;varying vec3 vP;void main(){vec3 p=position;p.x+=sin(p.y*0.5+uTime*0.2)*0.12;p.y+=cos(p.x*0.4+uTime*0.25)*0.12;p.z+=sin(p.z*0.6+uTime*0.2)*0.12;vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=(22.0*uPixelRatio)/-mv.z;vP=p;}',fragmentShader:'uniform vec3 uColor;varying vec3 vP;void main(){float d=distance(gl_PointCoord,vec2(0.5));if(d>0.5)discard;float a=1.0-(d*2.0);a=pow(a,1.5);gl_FragColor=vec4(uColor,a*0.65);}',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
-const pts = new THREE.Points(g,m); scene.add(pts);
-let af=null,vis=true,clk=new THREE.Clock();
-function render(){if(!r)return;const t=clk.getElapsedTime();m.uniforms.uTime.value=t;pts.rotation.y=t*0.015;pts.rotation.x=Math.sin(t*0.08)*0.08;r.render(scene,cam);}
-function loop(){render();af=requestAnimationFrame(loop);}
-function start(){if(af!==null)return;clk.getDelta();loop();}
-function stop(){if(af!==null){cancelAnimationFrame(af);af=null;}}
-window.addEventListener('resize',()=>{cam.aspect=W()/H();cam.updateProjectionMatrix();r.setSize(W(),H());r.setPixelRatio(Math.min(window.devicePixelRatio,1.5));m.uniforms.uPixelRatio.value=Math.min(window.devicePixelRatio,1.5);});
-document.addEventListener('visibilitychange',()=>{vis=!document.hidden;vis?start():stop();});
-start(); render();
+<script>
+// ═══ Fragment Shader Background (Redesign 2026) ═══
+// Pure WebGL2 — Domain-Warped Flow-Field Noise — Zero Dependencies
+(function(){
+var C=document.getElementById('knowledge-canvas');
+if(!C)return;
+var dpr=Math.min(devicePixelRatio||1,1.5);
+var G=C.getContext('webgl2',{antialias:false,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:false});
+if(!G){C.style.display='none';return}
+var VS='#version 300 es
+in vec2 a;out vec2 v;void main(){v=a*0.5+0.5;gl_Position=vec4(a,0,1);}';
+var FS=`#version 300 es
+precision highp float;
+in vec2 v;
+out vec4 o;
+uniform float t;
+uniform vec2 r;
+uniform float I;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5,f=1.;for(int i=0;i<3;i++){v+=a*n(p*f);f*=2.;a*=.5;}return v;}
+float dw(vec2 p,float T){vec2 q=vec2(fbm(p+vec2(0,T*.05)),fbm(p+vec2(T*.05,5.2)));vec2 r2=vec2(fbm(p+4.*q+vec2(1.7,9.2)+T*.06),fbm(p+4.*q+vec2(8.3,2.8)+T*.07));return fbm(p+4.*r2);}
+void main(){
+vec2 st=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);
+float T=t*.15;
+float n1=dw(st*2.5,T);
+float n2=dw(st*1.8+vec2(3,7),T*.7);
+float p=mix(n1,n2,.4);
+float e=smoothstep(.3,.7,abs(p-.5)*2.)*.3;
+vec3 bg=vec3(.02,.031,.051);
+vec3 ne=vec3(.176,.831,.749);
+vec3 pu=vec3(.545,.357,.984);
+vec3 fc=mix(ne,pu,mix(.5,.5,p*.5+.5)*.3);
+vec3 col=bg+fc*((p*I*.12)+(e*I*.08));
+col*=1.-length(v-.5)*.6;
+col=clamp(col,0.,.12);
+o=vec4(col,1);
+}`;
+function S(t,src){
+var s=G.createShader(t);
+G.shaderSource(s,src);
+G.compileShader(s);
+if(!G.getShaderParameter(s,G.COMPILE_STATUS)){console.warn('Shader:',G.getShaderInfoLog(s));G.deleteShader(s);return null}
+return s;
 }
+var vs=S(G.VERTEX_SHADER,VS),fs=S(G.FRAGMENT_SHADER,FS);
+if(!vs||!fs)return;
+var P=G.createProgram();
+G.attachShader(P,vs);G.attachShader(P,fs);G.linkProgram(P);
+if(!G.getProgramParameter(P,G.LINK_STATUS)){console.warn('Link:',G.getProgramInfoLog(P));return}
+G.useProgram(P);
+var verts=new Float32Array([-1,-1,-1,1,1,-1,1,-1,-1,1,1,1]);
+var vbo=G.createBuffer();
+G.bindBuffer(G.ARRAY_BUFFER,vbo);
+G.bufferData(G.ARRAY_BUFFER,verts,G.STATIC_DRAW);
+var aP=G.getAttribLocation(P,'a');
+G.enableVertexAttribArray(aP);
+G.vertexAttribPointer(aP,2,G.FLOAT,false,0,0);
+var uT=G.getUniformLocation(P,'t'),uR=G.getUniformLocation(P,'r');
+var uI=G.getUniformLocation(P,'I'),anim=null,st=performance.now();
+var m=innerWidth<768,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sz(){
+var dp=Math.min(devicePixelRatio||1,1.5),w=innerWidth*dp,h=innerHeight*dp;
+C.width=w;C.height=h;G.viewport(0,0,w,h);
+G.uniform2f(uR,w,h);G.uniform1f(uI,innerWidth<768?.5:1);
+}
+sz();
+function R(nw){
+var e=(nw-st)*.001;
+G.uniform1f(uT,rm?0:e);
+G.drawArrays(G.TRIANGLES,0,6);
+anim=requestAnimationFrame(R);
+}
+document.addEventListener('visibilitychange',function(){
+if(document.hidden&&anim){cancelAnimationFrame(anim);anim=null}
+else if(!document.hidden&&!anim){st=performance.now();anim=requestAnimationFrame(R)}
+});
+window.addEventListener('resize',sz);
+if(!rm){anim=requestAnimationFrame(R)}else{G.uniform1f(uT,0);G.drawArrays(G.TRIANGLES,0,6)}
+})();
+</script>
+<script>
+// Text Scramble — Terminal Decode Effect
+(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var h1s=document.querySelectorAll('h1[data-scramble]');
+if(!h1s.length)return;
+var chars='!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzกขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮ';
+h1s.forEach(function(el){
+var orig=el.textContent,len=orig.length,start=performance.now();
+function frame(){
+var t=performance.now(),p=Math.min((t-start)/800,1);
+p=1-Math.pow(1-p,3);
+var r='';
+for(var i=0;i<len;i++){
+if(i<p*len)r+=orig[i];
+else if(Math.random()<.3)r+=chars[Math.floor(Math.random()*chars.length)];
+else r+=orig[i]||' ';
+}
+el.textContent=r;
+if(p<1)requestAnimationFrame(frame);
+else el.textContent=orig;
+}
+requestAnimationFrame(frame);
+});
+})();
 </script>
 </body>
 </html>

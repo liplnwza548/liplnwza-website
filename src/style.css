@@ -3,6 +3,13 @@
    Design System: Clean & Minimal
    ============================================ */
 
+/* ═══════ View Transitions API (Page Morph) ═══════ */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 300ms ease-out both vt-fade-out; }
+::view-transition-new(root) { animation: 400ms ease-in both vt-fade-in; }
+@keyframes vt-fade-out { to { opacity: 0; filter: blur(4px); } }
+@keyframes vt-fade-in { from { opacity: 0; filter: blur(2px); } to { opacity: 1; filter: blur(0); } }
+
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
   /* Colors */

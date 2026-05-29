@@ -33,7 +33,7 @@
         <header class="article-header">
           <p class="breadcrumb"><a href="./">← กลับไปคลังความรู้</a></p>
           <p class="section-label">AI Team Building</p>
-          <h1>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน — จากศูนย์จนทำงานแทนคุณได้</h1>
+          <h1 data-scramble>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน — จากศูนย์จนทำงานแทนคุณได้</h1>
           <p class="meta">LiplnwZa · พฤษภาคม 2026 · อ่าน 5 นาที</p>
         </header>
 
@@ -169,8 +169,13 @@
 
         <p>
           <strong>📥 อยากอ่านแบบสั้น?</strong>
-          <a href="../downloads/build-ai-team-summary.html">ดาวน์โหลด HTML สรุป 1 หน้า</a>
+          <a href="../downloads/build-ai-team-summary.html">📖 เปิดสรุป 1 หน้า</a>
         </p>
+
+        <!-- ═══════ INTERACTIVE AI TEAM GRAPH ═══════ -->
+        <h2>🧠 แผนที่ทีม AI — ลากดูได้!</h2>
+        <p>ลากโหนดเพื่อดูการเชื่อมต่อ · คลิกดูรายละเอียดแต่ละตัว</p>
+        <div id="ai-team-graph" style="width:100%;height:420px;border-radius:12px;background:rgba(13,17,23,0.5);border:1px solid rgba(45,212,191,0.08);margin:1.5rem 0;"></div>
         <p>
           <strong>🎧 ฟังแบบ Podcast:</strong> AI สองคนคุยกันอธิบายเนื้อหาจากทั้ง 3 บทความ 🎙️<br><br>
           <audio controls style="width:100%;max-width:600px;border-radius:10px;">
@@ -192,6 +197,8 @@
 
   {{> footer}}
 
+  <script type="module" src="/src/text-scramble.js"></script>
+  <script type="module" src="/src/ai-team-graph.js"></script>
   <script type="module" src="/src/knowledge-bg.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
