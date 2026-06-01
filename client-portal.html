@@ -1,0 +1,818 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal & Integration — LiplnwZa</title>
+  <meta name="description" content="หน้าต่างบริการลูกค้า ระบบชำระเงิน และสมัครรับข่าวสารการพัฒนา AI" />
+  <link rel="canonical" href="https://liplnwza.vercel.app/client-portal.html" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <style>
+    /* Premium Portal Styles override & custom */
+    .portal-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+    
+    .portal-header {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-6);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    
+    .portal-header__title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+    }
+    
+    .portal-header__subtitle {
+      color: var(--color-text-secondary);
+      font-size: var(--text-base);
+      margin-top: var(--space-2);
+    }
+    
+    .portal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(45, 212, 191, 0.08);
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: #2DD4BF;
+    }
+
+    .portal-badge__dot {
+      width: 8px;
+      height: 8px;
+      background-color: #9fe870; /* Progress Lime */
+      border-radius: 50%;
+      box-shadow: 0 0 8px #9fe870;
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* Grid Layouts */
+    .portal-grid {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: 2fr 1fr;
+    }
+    
+    @media (max-width: 992px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .portal-card {
+      background: rgba(22, 27, 34, 0.4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+    
+    .portal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-color, #2DD4BF), transparent);
+    }
+    
+    .portal-card:hover {
+      border-color: rgba(45, 212, 191, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .portal-card__title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--color-text);
+    }
+
+    .portal-card__icon {
+      font-size: 1.5rem;
+    }
+
+    /* System Stats Styling */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    
+    .stat-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    
+    .stat-box__label {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .stat-box__value {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-text);
+      font-family: var(--font-mono);
+    }
+    
+    .stat-box__desc {
+      font-size: var(--text-xs);
+      color: var(--desc-color, var(--color-text-tertiary));
+    }
+
+    /* Table Styling */
+    .table-responsive {
+      overflow-x: auto;
+      margin-top: var(--space-4);
+    }
+
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      text-align: left;
+    }
+    
+    .portal-table th {
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      border-bottom: 1px solid var(--color-border);
+      font-family: var(--font-sans);
+    }
+    
+    .portal-table td {
+      padding: var(--space-4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--color-text);
+    }
+    
+    .portal-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    /* Custom Status Badges */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 500;
+    }
+    
+    .status-badge--running {
+      background: rgba(159, 232, 112, 0.1);
+      color: #9fe870; /* Progress Lime */
+      border: 1px solid rgba(159, 232, 112, 0.2);
+    }
+    
+    .status-badge--idle {
+      background: rgba(167, 176, 192, 0.1);
+      color: #a7b0c0; /* Muted */
+      border: 1px solid rgba(167, 176, 192, 0.2);
+    }
+    
+    .status-badge--gate {
+      background: rgba(255, 107, 138, 0.1);
+      color: #ff6b8a; /* Risk Rose */
+      border: 1px solid rgba(255, 107, 138, 0.3);
+      animation: pulse-border 2s infinite;
+    }
+
+    .status-badge--pending {
+      background: rgba(245, 184, 75, 0.1);
+      color: #f5b84b; /* Decision Amber */
+      border: 1px solid rgba(245, 184, 75, 0.2);
+    }
+
+    @keyframes pulse-border {
+      0% { border-color: rgba(255, 107, 138, 0.3); }
+      50% { border-color: rgba(255, 107, 138, 0.8); }
+      100% { border-color: rgba(255, 107, 138, 0.3); }
+    }
+
+    /* Checkout & Plans */
+    .plan-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    
+    .plan-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+    
+    .plan-card--active {
+      background: rgba(45, 212, 191, 0.04);
+      border-color: #46c7e8; /* Signal Cyan */
+      box-shadow: 0 0 12px rgba(70, 199, 232, 0.15);
+    }
+    
+    .plan-card__title {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-1);
+    }
+    
+    .plan-card__price {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: #2DD4BF;
+      font-family: var(--font-mono);
+    }
+
+    .plan-card__price span {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      font-weight: 400;
+    }
+
+    /* Checkout Form styling */
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .checkout-btn {
+      background: #46c7e8; /* Signal Cyan */
+      color: #05080D;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--transition-base);
+      box-shadow: 0 0 10px rgba(70, 199, 232, 0.2);
+    }
+
+    .checkout-btn:hover {
+      background: #5EEAD4;
+      box-shadow: 0 0 18px rgba(94, 234, 212, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Newsletter Form */
+    .newsletter-section {
+      background: linear-gradient(135deg, rgba(22, 27, 34, 0.7) 0%, rgba(13, 17, 23, 0.8) 100%);
+      border: 1px solid rgba(155, 140, 255, 0.2); /* Violet */
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      position: relative;
+    }
+
+    .newsletter-section::before {
+      background: linear-gradient(90deg, transparent, #9b8cff, transparent);
+    }
+
+    .newsletter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .newsletter-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .newsletter-input-group {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    @media (max-width: 480px) {
+      .newsletter-input-group {
+        flex-direction: column;
+      }
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(5, 8, 13, 0.6);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      transition: all var(--transition-base);
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: #9b8cff; /* Violet */
+      box-shadow: 0 0 10px rgba(155, 140, 255, 0.2);
+    }
+
+    .newsletter-btn {
+      background: #9b8cff; /* Violet */
+      color: #05080D;
+      border: none;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-6);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .newsletter-btn:hover {
+      background: #b5a9ff;
+      box-shadow: 0 0 15px rgba(155, 140, 255, 0.4);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-label input {
+      accent-color: #9b8cff;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Modal / Alert styles for interactive mockup demo */
+    .demo-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(22, 27, 34, 0.95);
+      border: 1px solid #9fe870;
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-6);
+      color: var(--color-text);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .demo-toast.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body data-theme="cyber" data-page="client-portal">
+
+  {{> nav}}
+
+  <main class="page-content">
+    <div class="portal-container">
+      
+      <!-- Header -->
+      <div class="portal-header animate-on-scroll">
+        <div>
+          <div class="portal-badge">
+            <span class="portal-badge__dot"></span>
+            CONNECTED TO AGENT-VAULT V2.4
+          </div>
+          <h1 class="portal-header__title" style="margin-top: var(--space-3);">Client Dashboard & Portal</h1>
+          <p class="portal-header__subtitle">จัดการโปรเจกต์ ตรวจสอบสถานะ AI Agent ชำระค่าบริการ และสมัครรับข่าวสาร</p>
+        </div>
+      </div>
+
+      <!-- Main Portal Grid -->
+      <div class="portal-grid">
+        
+        <!-- Column 1: Client Portal & Agent Status -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+          
+          <!-- System Performance Overview Card -->
+          <div class="portal-card animate-on-scroll" style="--accent-color: #46c7e8;">
+            <h2 class="portal-card__title">
+              <span class="portal-card__icon">📊</span>
+              ระบบปัจจุบัน & สถานะแบบ Real-time
+            </h2>
+            <p style="color: var(--color-text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);">
+              ตรวจสอบประสิทธิภาพการทำงานและปริมาณการประมวลผลของทีม AI ในรอบเดือนปัจจุบัน
+            </p>
+            
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-box__label">AI Agents Online</span>
+                <span class="stat-box__value" id="active-agents-count">5 / 6</span>
+                <span class="stat-box__desc" style="--desc-color: #ff6b8a;">⚠️ 1 ตัวต้องการการอนุมัติ</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box__label">Token Used</span>
+                <span class="stat-box__value">1,482K</span>
+                <span class="stat-box__desc">~ $2.96 USD</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box__label">Tasks Done</span>
+                <span class="stat-box__value">412</span>
+                <span class="stat-box__desc" style="--desc-color: #9fe870;">📈 สำเร็จ 100%</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box__label">System Health</span>
+                <span class="stat-box__value">99.8%</span>
+                <span class="stat-box__desc">Uptime ย้อนหลัง 30 วัน</span>
+              </div>
+            </div>
+            
+            <h3 style="font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin-top: var(--space-4); margin-bottom: var(--space-3);">
+              รายชื่อ AI Agent ในระบบ
+            </h3>
+            
+            <div class="table-responsive">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Agent Name</th>
+                    <th>Role</th>
+                    <th>Last Active</th>
+                    <th>Uptime</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 600; font-family: var(--font-mono);">Hermes</td>
+                    <td style="color: var(--color-text-secondary);">Orchestrator / Telegram</td>
+                    <td>10 วินาทีที่แล้ว</td>
+                    <td>99.9%</td>
+                    <td><span class="status-badge status-badge--running">Running</span></td>
+                    <td style="text-align: right;"><span style="color: var(--color-text-tertiary); font-size: var(--text-xs);">Auto-managed</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600; font-family: var(--font-mono);">Gemini Writer</td>
+                    <td style="color: var(--color-text-secondary);">Content Producer</td>
+                    <td>1 นาทีที่แล้ว</td>
+                    <td>99.7%</td>
+                    <td><span class="status-badge status-badge--running">Running</span></td>
+                    <td style="text-align: right;"><span style="color: var(--color-text-tertiary); font-size: var(--text-xs);">Auto-managed</span></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600; font-family: var(--font-mono);">Codex CLI</td>
+                    <td style="color: var(--color-text-secondary);">Terminal Automation</td>
+                    <td>15 นาทีที่แล้ว</td>
+                    <td>98.5%</td>
+                    <td><span class="status-badge status-badge--idle">Idle</span></td>
+                    <td style="text-align: right;"><button class="btn btn--secondary" style="padding: 4px 8px; font-size: var(--text-xs);" id="codex-btn" onclick="runCodex()">Start</button></td>
+                  </tr>
+                  <tr id="gate-agent-row">
+                    <td style="font-weight: 600; font-family: var(--font-mono);">OpenClaw</td>
+                    <td style="color: var(--color-text-secondary);">Image Creator / Final Editor</td>
+                    <td>2 ชม. ที่แล้ว</td>
+                    <td>99.1%</td>
+                    <td><span class="status-badge status-badge--gate" id="openclaw-status">Human Gate</span></td>
+                    <td style="text-align: right;">
+                      <button class="btn btn--primary" style="padding: 4px 8px; font-size: var(--text-xs); background: #f5b84b; border-color: #f5b84b; color: #05080D;" id="approve-btn" onclick="approveAgent('OpenClaw')">Approve Work</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 600; font-family: var(--font-mono);">Hyperframes</td>
+                    <td style="color: var(--color-text-secondary);">Video Renderer</td>
+                    <td>4 ชม. ที่แล้ว</td>
+                    <td>99.9%</td>
+                    <td><span class="status-badge status-badge--running">Running</span></td>
+                    <td style="text-align: right;"><span style="color: var(--color-text-tertiary); font-size: var(--text-xs);">Auto-managed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Newsletter Card (Now inside column 1 or bottom) -->
+          <div class="newsletter-section animate-on-scroll">
+            <div class="newsletter-grid">
+              <div>
+                <h2 style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-2);">
+                  สมัครรับข่าวสาร AI Insight 
+                </h2>
+                <p style="color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.5;">
+                  แชร์ข่าวสารเจาะลึก เทคนิคการสร้าง Agent และ Workflow ล่าสุดตรงถึงกล่องข้อความของคุณ สัปดาห์ละ 1 ครั้ง 
+                </p>
+                <div style="margin-top: var(--space-4); display: flex; gap: var(--space-4); color: #9b8cff; font-family: var(--font-mono); font-size: var(--text-xs);">
+                  <span>👥 ผู้สมัครแล้ว 1,240+ คน</span>
+                  <span>🔥 อัปเดตล่าสุด: เมื่อวานนี้</span>
+                </div>
+              </div>
+              <div>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); submitNewsletter();">
+                  <div class="checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" checked id="sub-weekly">
+                      <span>Weekly AI Team Workflows (อัปเดต flow สำเร็จรูป)</span>
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" checked id="sub-updates">
+                      <span>LiplnwZa System Updates (เบต้าฟีเจอร์ & เทมเพลต)</span>
+                    </label>
+                  </div>
+                  <div class="newsletter-input-group">
+                    <input type="email" placeholder="you@example.com" class="newsletter-input" required id="newsletter-email">
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Column 2: Payment Integration Mockup -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+          
+          <div class="portal-card animate-on-scroll" style="--accent-color: #9fe870;">
+            <h2 class="portal-card__title">
+              <span class="portal-card__icon">💳</span>
+              ระบบชำระเงิน / อัปเกรด
+            </h2>
+            
+            <p style="color: var(--color-text-secondary); margin-bottom: var(--space-4); font-size: var(--text-sm);">
+              เลือกแพ็คเกจเพื่อใช้งาน Token เพิ่มเติม หรือสมัครสมาชิกระดับพรีเมียม
+            </p>
+            
+            <div class="plan-selector">
+              <div class="plan-card plan-card--active" onclick="selectPlan('standard')" id="plan-standard">
+                <div class="plan-card__title">Developer Pack</div>
+                <div class="plan-card__price">฿990<span>/เดือน</span></div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-secondary); margin-top: var(--space-2);">
+                  5 Agents · 5M Tokens
+                </div>
+              </div>
+              <div class="plan-card" onclick="selectPlan('premium')" id="plan-premium">
+                <div class="plan-card__title">Pro Team Pack</div>
+                <div class="plan-card__price">฿2,900<span>/เดือน</span></div>
+                <div style="font-size: var(--text-xs); color: var(--color-text-secondary); margin-top: var(--space-2);">
+                  Unlimited · 25M Tokens
+                </div>
+              </div>
+            </div>
+            
+            <!-- Payment Form -->
+            <form class="checkout-form" onsubmit="event.preventDefault(); processPayment();">
+              <div class="form__group">
+                <label class="form__label" style="font-size: var(--text-xs); display: block; margin-bottom: 4px;">ชื่อบนบัตรเครดิต</label>
+                <input type="text" class="form__input" placeholder="LIPLNWZA TEAM" required value="LIPLNWZA STUDIO">
+              </div>
+              
+              <div class="form__group" style="margin-top: 8px;">
+                <label class="form__label" style="font-size: var(--text-xs); display: block; margin-bottom: 4px;">หมายเลขบัตร</label>
+                <input type="text" class="form__input" placeholder="4242 4242 4242 4242" required value="4242 •••• •••• 4242">
+              </div>
+              
+              <div class="form-row" style="margin-top: 8px;">
+                <div class="form__group">
+                  <label class="form__label" style="font-size: var(--text-xs); display: block; margin-bottom: 4px;">วันหมดอายุ (MM/YY)</label>
+                  <input type="text" class="form__input" placeholder="12/28" required value="12/28">
+                </div>
+                <div class="form__group">
+                  <label class="form__label" style="font-size: var(--text-xs); display: block; margin-bottom: 4px;">CVC</label>
+                  <input type="password" class="form__input" placeholder="•••" required value="123">
+                </div>
+              </div>
+              
+              <div style="margin-top: var(--space-4); border-top: 1px dashed var(--color-border); padding-top: var(--space-3); display: flex; justify-content: space-between; font-size: var(--text-sm);">
+                <span style="color: var(--color-text-secondary);">ยอดชำระเดือนนี้:</span>
+                <strong style="color: #46c7e8; font-family: var(--font-mono);" id="checkout-total">฿990.00</strong>
+              </div>
+              
+              <button type="submit" class="btn checkout-btn" style="margin-top: var(--space-4); width: 100%; border-radius: var(--radius-md); padding: var(--space-3);" id="pay-button">
+                ชำระเงินผ่านระบบ Stripe
+              </button>
+            </form>
+          </div>
+          
+          <!-- Recent Invoices Card -->
+          <div class="portal-card animate-on-scroll" style="--accent-color: #f5b84b;">
+            <h3 style="font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-3);">
+              ประวัติการชำระเงินล่าสุด
+            </h3>
+            
+            <table class="portal-table" style="font-size: var(--text-xs);">
+              <thead>
+                <tr>
+                  <th>Invoice ID</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-body">
+                <tr>
+                  <td style="font-family: var(--font-mono); color: var(--color-text-secondary);">INV-2026-05A</td>
+                  <td style="font-weight: 600;">฿990.00</td>
+                  <td><span class="status-badge status-badge--running" style="padding: 1px 6px;">Paid</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); color: var(--color-text-secondary);">INV-2026-04B</td>
+                  <td style="font-weight: 600;">฿990.00</td>
+                  <td><span class="status-badge status-badge--running" style="padding: 1px 6px;">Paid</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); color: var(--color-text-secondary);">INV-2026-03C</td>
+                  <td style="font-weight: 600;">฿2,900.00</td>
+                  <td><span class="status-badge status-badge--running" style="padding: 1px 6px;">Paid</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Interactive demo toast -->
+  <div class="demo-toast" id="toast">
+    <span id="toast-icon">✅</span>
+    <span id="toast-message">บันทึกสำเร็จ</span>
+  </div>
+
+  {{> footer}}
+
+  <script>
+    // Selected Plan Tracking
+    let selectedPrice = 990;
+    
+    function selectPlan(plan) {
+      document.getElementById('plan-standard').classList.remove('plan-card--active');
+      document.getElementById('plan-premium').classList.remove('plan-card--active');
+      
+      if (plan === 'standard') {
+        document.getElementById('plan-standard').classList.add('plan-card--active');
+        selectedPrice = 990;
+        document.getElementById('checkout-total').innerText = '฿990.00';
+      } else {
+        document.getElementById('plan-premium').classList.add('plan-card--active');
+        selectedPrice = 2900;
+        document.getElementById('checkout-total').innerText = '฿2,900.00';
+      }
+      showToast('⚡', `เลือกแผน ${plan === 'standard' ? 'Developer Pack' : 'Pro Team Pack'} สำเร็จ`);
+    }
+
+    // Approve Agent Mock Action
+    function approveAgent(agentName) {
+      const statusBadge = document.getElementById('openclaw-status');
+      const approveBtn = document.getElementById('approve-btn');
+      
+      statusBadge.innerText = 'Running';
+      statusBadge.className = 'status-badge status-badge--running';
+      
+      approveBtn.innerText = 'Approved';
+      approveBtn.disabled = true;
+      approveBtn.style.background = 'rgba(255, 255, 255, 0.05)';
+      approveBtn.style.color = 'var(--color-text-tertiary)';
+      approveBtn.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+      approveBtn.style.cursor = 'default';
+      
+      // Update count
+      document.getElementById('active-agents-count').innerText = '6 / 6';
+      
+      showToast('🚀', `อนุมัติคำสั่งงานของ ${agentName} เรียบร้อย!`);
+    }
+
+    // Start Agent Codex
+    function runCodex() {
+      const codexBtn = document.getElementById('codex-btn');
+      showToast('⚙️', `กำลังเริ่มการประมวลผลของ Codex CLI...`);
+      codexBtn.innerText = 'Running...';
+      codexBtn.disabled = true;
+      setTimeout(() => {
+        showToast('⚙️', `Codex CLI ทำงานเสร็จสมบูรณ์`);
+        codexBtn.innerText = 'Start';
+        codexBtn.disabled = false;
+      }, 2000);
+    }
+
+    // Payment Processing Mock
+    function processPayment() {
+      const payBtn = document.getElementById('pay-button');
+      const origText = payBtn.innerText;
+      payBtn.innerText = 'กำลังประมวลผล...';
+      payBtn.disabled = true;
+      
+      setTimeout(() => {
+        payBtn.innerText = 'ชำระเงินสำเร็จ!';
+        showToast('💳', 'ชำระเงินเสร็จสมบูรณ์ ยินดีต้อนรับสู่ Premium Vault');
+        
+        // Add transaction to history
+        const tbody = document.getElementById('transactions-body');
+        const newRow = document.createElement('tr');
+        const randId = Math.floor(100 + Math.random() * 900);
+        newRow.innerHTML = `
+          <td style="font-family: var(--font-mono); color: var(--color-text-secondary);">INV-2026-06${randId}</td>
+          <td style="font-weight: 600;">฿${selectedPrice.toLocaleString()}.00</td>
+          <td><span class="status-badge status-badge--running" style="padding: 1px 6px;">Paid</span></td>
+        `;
+        tbody.insertBefore(newRow, tbody.firstChild);
+        
+        setTimeout(() => {
+          payBtn.innerText = origText;
+          payBtn.disabled = false;
+        }, 3000);
+      }, 1500);
+    }
+
+    // Newsletter Submission Mock
+    function submitNewsletter() {
+      const emailInput = document.getElementById('newsletter-email');
+      const email = emailInput.value;
+      showToast('📥', `ลงทะเบียนรับข่าวสารสำหรับ ${email} เรียบร้อย!`);
+      emailInput.value = '';
+    }
+
+    // Toast Utility
+    function showToast(icon, message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-icon').innerText = icon;
+      document.getElementById('toast-message').innerText = message;
+      
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 3500);
+    }
+  </script>
+  
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

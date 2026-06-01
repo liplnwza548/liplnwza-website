@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent-Vault คืออะไร — ระบบคลังสมองที่ AI อ่านร่วมกันได้ | LiplnwZa</title>
+  <meta name="description" content="รู้จัก Agent-Vault ระบบคลังสมองและหน่วยความจำส่วนกลางที่ช่วยให้ทีม AI Agent ทำงานร่วมกันอย่างไร้รอยต่อ แชร์ข้อมูลและบริบทเดียวกันโดยไม่ต้องยัดข้อมูลลงใน Prompt" />
+  <link rel="canonical" href="https://liplnwza.vercel.app/knowledge/what-is-agent-vault.html" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  {{> analytics}}
+</head>
+<body data-theme="cyber" data-page="knowledge">
+
+  <canvas id="knowledge-canvas"></canvas>
+
+  {{> nav}}
+
+  <main class="page-content">
+    <div class="glass-panel">
+      <article class="article-content">
+        <header class="article-header">
+          <p class="breadcrumb"><a href="./">← กลับไปคลังความรู้</a></p>
+          <p class="section-label">Agent-Vault</p>
+          <h1 data-scramble>Agent-Vault คืออะไร — ระบบคลังสมองที่ AI อ่านร่วมกันได้</h1>
+          <p class="meta">LiplnwZa · พฤษภาคม 2026 · อ่าน 6 นาที</p>
+        </header>
+
+        <p>เมื่อคุณเริ่มมี <strong>AI Agent</strong> หลายตัวมาช่วยงาน (เช่น ตัวนึงช่วยหาข้อมูล, ตัวนึงเขียนโค้ด, อีกตัวทำภาพ) ปัญหาใหญ่ที่จะตามมาทันทีคือ <strong>"พวกมันคุยกันไม่รู้เรื่อง"</strong> หรือ <strong>"ความจำเสื่อมหลังจากรันงานจบ"</strong></p>
+        <p>นึกภาพว่าคุณมีพนักงาน 3 คน แต่ละคนนั่งแยกห้อง ไม่มีโต๊ะทำงานกลาง ไม่มีระบบแชร์ไฟล์ ทุกครั้งที่สั่งงาน คุณต้องคัดลอกข้อมูลจากคนแรก ส่งเมลไปให้คนสอง แล้วคัดลอกผลลัพธ์จากคนสอง ส่งเมลไปให้คนสาม... นี่คือฝันร้ายของการบริหารจัดการ</p>
+        <p><strong>Agent-Vault</strong> คือระบบที่เราสร้างขึ้นมาเพื่อแก้ปัญหานี้โดยเฉพาะ มันคือ "คลังสมองส่วนกลาง" ที่ทำให้ AI ทุกตัวในทีมสามารถเข้ามาอ่านและเขียนความทรงจำร่วมกันได้</p>
+
+        <h2>ทำไมระบบเดิมถึงพัง? — ข้อจำกัดของ AI ทั่วไป</h2>
+        <p>ในการใช้งาน AI ทั่วไป มีข้อจำกัดหลักๆ 3 ข้อที่ทำให้การสร้างทีม AI ขนาดใหญ่เป็นเรื่องยาก:</p>
+        <ul>
+          <li><strong>Context Window มีจำกัด:</strong> AI ไม่สามารถจำข้อมูลยาวเป็นล้านบรรทัดพร้อมกันในบทสนทนาเดียวได้</li>
+          <li><strong>Chat & Forget:</strong> เมื่อปิดหน้าต่างแชท AI จะลืมข้อมูลที่คุยไปทั้งหมด</li>
+          <li><strong>Information Silo:</strong> AI Agent แต่ละตัวมีห้องแชทของตัวเอง ไม่รู้ว่าตัวอื่นคุยอะไรหรือทำงานอะไรไปแล้วบ้าง</li>
+        </ul>
+
+        <div class="highlight-box">
+          <strong>💡 Solution:</strong> แทนที่จะพยายามป้อนข้อมูลทุกอย่างใส่ Prompt เราสร้าง <strong>Vault</strong> (คลังเก็บข้อมูล) ด้านนอก แล้วสอนให้ AI รู้จักเดินไปหยิบอ่านและจดบันทึกด้วยตัวเอง
+        </div>
+
+        <h2>Agent-Vault ทำงานอย่างไร?</h2>
+        <p>สถาปัตยกรรมของ Agent-Vault ไม่ใช่เทคโนโลยีลึกลับ แต่มันคือการผสมผสานโครงสร้างข้อมูลที่เรียบง่ายแต่ทรงพลัง:</p>
+
+        <div class="timeline-item">
+          <div class="time">1. Markdown-Based Vault (โครงสร้างเอกสารที่มนุษย์และ AI อ่านง่าย)</div>
+          <p>เราเก็บคู่มือการทำงาน (SOPs), ข้อมูลแบรนด์ (Brand Guidelines), และประวัติลูกค้าไว้ในรูปแบบไฟล์ Markdown (.md) ที่จัดเรียงอย่างเป็นระบบ AI สามารถเข้าใจโครงสร้างหัวข้อ ลิงก์ และตารางใน Markdown ได้รวดเร็วกว่า PDF หรือ Word ทั่วไป</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">2. Vector Database (ค้นหาความหมายแบบข้ามคำ)</div>
+          <p>เมื่อคลังเอกสารใหญ่ขึ้น AI จะไม่อ่านทั้งหมด แต่จะใช้ระบบค้นหาแบบ Semantic Search (ค้นหาด้วยความหมาย) โดยใช้เทคโนโลยี Embeddings เพื่อดึงเฉพาะย่อหน้าที่เกี่ยวข้องที่สุดมาใส่ไว้ในหน่วยความจำชั่วคราว (Context) ก่อนตอบคำถาม</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">3. Persistent Memory Logs (สมุดบันทึกสถานะงาน)</div>
+          <p>เมื่อ Agent ตัวแรกทำงานเสร็จ (เช่น หาข้อมูลเสร็จ) มันจะเขียนสรุปลงใน Vault เมื่อ Agent ตัวถัดไป (เช่น ตัวเขียนเนื้อหา) เข้ามาทำงาน มันจะอ่านบันทึกนี้เพื่อรันงานต่อได้ทันทีเสมือนทำงานอยู่ในหัวเดียวกัน</p>
+        </div>
+
+        <h2>ประโยชน์ที่ทีม AI ของคุณจะได้รับ</h2>
+        <p>การมี Agent-Vault ช่วยยกเครื่องการทำงานของทีม AI ได้ในทันที:</p>
+        <ol>
+          <li><strong>แชร์ Context ได้ไร้ขีดจำกัด:</strong> AI ทุกตัวอ้างอิงแหล่งข้อมูลเดียวกัน ไม่มีความคิดเห็นขัดแย้งกันเอง</li>
+          <li><strong>ประหยัด Token และค่าใช้จ่าย:</strong> ไม่ต้องยัดข้อมูลแบรนด์/ข้อมูลลูกค้าทั้งหมดใน Prompt ทุกครั้งที่ส่งคำสั่ง</li>
+          <li><strong>ทำงานแบบ Autonomy ได้สมบูรณ์:</strong> AI สามารถเข้ามาอ่านสถานะงานล่าสุดจาก Vault แล้วรันงานต่อโดยไม่ต้องรอให้มนุษย์มากดสั่งทุกขั้นตอน</li>
+        </ol>
+
+        <blockquote>
+          "Agent-Vault คือกระดานดำของทีม AI<br>
+          ที่ทุกคนเดินมาเขียนสิ่งที่ทำเสร็จ และอ่านสิ่งที่จะต้องทำต่อร่วมกัน"
+        </blockquote>
+
+        <h2>เริ่มต้นสร้าง Vault ของคุณเอง</h2>
+        <p>คุณไม่จำเป็นต้องตั้งเซิร์ฟเวอร์ราคาแพงเพื่อเริ่มสร้าง Vault:</p>
+        <ul>
+          <li><strong>ขั้นเริ่มต้น:</strong> ใช้โฟลเดอร์ Google Drive หรือ Notion ที่จัดหมวดหมู่ดีๆ แล้วเชื่อมผ่านเครื่องมือเช่น Make.com หรือ Dify</li>
+          <li><strong>ขั้นสูง:</strong> ใช้ Git Repository ที่เก็บไฟล์ Markdown หรือ Vector Database เช่น Pinecone, ChromaDB สำหรับระบบ Multi-Agent ที่ซับซ้อน</li>
+        </ul>
+
+        <hr>
+
+        <div class="highlight-box">
+          <strong>📚 อ่านบทความอื่นในซีรีส์:</strong><br>
+          👉 <a href="./build-ai-team-4-months.html">วิธีสร้างทีม AI 6 ตัวใน 4 เดือน — จากศูนย์จนทำงานแทนคุณได้</a><br>
+          👉 <a href="./what-is-ai-agent.html">AI Agent คืออะไร? — อธิบายแบบคนไม่เคยเขียนโค้ด</a><br>
+          👉 <a href="./setup-first-ai-team-one-hour.html">วิธีตั้งทีม AI ตัวแรกใน 1 ชั่วโมง (ฟรี) — อธิบายแบบจับมือทำ</a>
+        </div>
+
+        <p>
+          <strong>💬 อยากปรึกษาเรื่องการวางระบบ Agent-Vault ในบริษัท?</strong>
+          <a href="../contact.html">ส่งข้อความคุยกับผมได้ที่นี่</a>
+        </p>
+
+      </article>
+    </div>
+  </main>
+
+  {{> footer}}
+
+  <script type="module" src="/src/text-scramble.js"></script>
+  <script type="module" src="/src/knowledge-bg.js"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
