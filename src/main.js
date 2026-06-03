@@ -22,6 +22,18 @@ function initScrollReveal() {
   elements.forEach(el => observer.observe(el));
 }
 
+// --- Page-level nav active state ---
+function initPageNavActive() {
+  const currentPage = document.body?.dataset?.page;
+  if (!currentPage) return;
+
+  document.querySelectorAll('.nav__link[data-link]').forEach(link => {
+    if (link.dataset.link === currentPage) {
+      link.classList.add('nav__link--active');
+    }
+  });
+}
+
 // --- Nav scroll behavior ---
 function initNav() {
   const nav = document.getElementById('nav');
@@ -208,6 +220,7 @@ function initContactForm() {
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
+  initPageNavActive();
   initNav();
   initCounters();
   initSmoothScroll();
