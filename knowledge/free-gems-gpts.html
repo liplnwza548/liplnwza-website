@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>คลังแจกฟรี — Gem & GPTs ที่คัดแล้ว | LiplnwZa</title>
-  <meta name="description" content="คลังแจกฟรี Gem และ GPTs ที่คัดแล้ว ใช้งานง่าย อธิบายเป็นไทย และต่อยอดกับ Knowledge Hub ของ LiplnwZa" />
+  <title>คลังแจกฟรี — เครื่องมือ AI & บทความที่ใช้ได้จริง | LiplnwZa</title>
+  <meta name="description" content="รวมเครื่องมือ AI ฟรี บทความ และทรัพยากรที่คัดแล้ว สำหรับคนไทยที่อยากเริ่มใช้ AI โดยไม่ต้องเสียเงิน — ChatGPT, Gemini, NotebookLM และอีกเพียบ" />
   <link rel="canonical" href="https://liplnwza.vercel.app/knowledge/free-gems-gpts.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +16,7 @@
 
   <style>
     .free-hero {
-      padding: var(--space-16) 0 var(--space-12);
+      padding: var(--space-16) 0 var(--space-8);
       position: relative;
       overflow: hidden;
     }
@@ -56,12 +56,35 @@
       color: var(--color-text-secondary);
       max-width: 72ch;
     }
+
+    /* Section headers */
+    .section-intro {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+    .section-intro h2 {
+      font-size: var(--text-3xl);
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+    }
+    .section-intro p {
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Grid layout */
     .free-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-6);
-      margin-top: var(--space-8);
+      margin-bottom: var(--space-16);
     }
+    .free-grid--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* Cards */
     .free-card {
       background: var(--color-white);
       border: 1px solid var(--color-border);
@@ -69,11 +92,17 @@
       padding: var(--space-6);
       box-shadow: var(--shadow-md);
       transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+      display: flex;
+      flex-direction: column;
     }
     .free-card:hover {
       transform: translateY(-2px);
       border-color: rgba(10,143,143,0.28);
       box-shadow: var(--shadow-lg);
+    }
+    .free-card__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-3);
     }
     .free-card__meta {
       display: flex;
@@ -81,6 +110,40 @@
       gap: var(--space-2);
       margin: var(--space-4) 0 var(--space-3);
     }
+    .free-card h2 {
+      font-size: var(--text-2xl);
+      line-height: 1.25;
+      margin-bottom: var(--space-3);
+    }
+    .free-card p {
+      color: var(--color-text-secondary);
+      flex: 1;
+    }
+    .free-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: var(--space-4);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: var(--color-accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: var(--text-sm);
+      text-decoration: none;
+      transition: opacity var(--transition-base), transform var(--transition-base);
+      align-self: flex-start;
+    }
+    .free-card__link:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+    .free-card__link--outline {
+      background: transparent;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+    }
+
     .pill {
       display: inline-flex;
       align-items: center;
@@ -92,235 +155,284 @@
       font-size: var(--text-xs);
       font-weight: 600;
     }
-    .free-card h2 {
-      font-size: var(--text-2xl);
-      line-height: 1.25;
-      margin-bottom: var(--space-3);
+    .pill--accent {
+      background: rgba(10,143,143,0.1);
+      color: var(--color-accent);
     }
-    .free-card p { color: var(--color-text-secondary); }
-    .free-card ul { margin-top: var(--space-4); padding-left: 1.15rem; color: var(--color-text); }
-    .free-card li { margin: 0.45rem 0; }
-    .decision-box {
-      margin-top: var(--space-10);
-      background: linear-gradient(180deg, rgba(10,143,143,0.06), rgba(255,255,255,0.9));
-      border: 1px solid rgba(10,143,143,0.18);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-md);
-    }
-    .decision-box h2 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
-    .decision-list {
+
+    /* Download row */
+    .dl-row {
       display: grid;
-      gap: var(--space-3);
-      margin-top: var(--space-4);
-      color: var(--color-text-secondary);
-    }
-    .decision-item {
-      display: flex;
-      gap: var(--space-3);
-      align-items: flex-start;
-    }
-    .decision-item strong { color: var(--color-text); }
-    .related-links {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-4);
-      margin-top: var(--space-6);
+      margin-bottom: var(--space-16);
     }
-    .related-links a {
-      display: block;
-      padding: var(--space-4);
+    .dl-card {
+      background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      background: var(--color-white);
-      transition: border-color var(--transition-base), transform var(--transition-base);
-    }
-    .related-links a:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-2px);
-    }
-    .related-links span {
-      display: block;
-      color: var(--color-text-secondary);
-      font-size: var(--text-sm);
-      margin-top: var(--space-1);
-    }
-    .cta-row {
+      padding: var(--space-5);
+      box-shadow: var(--shadow-sm);
       display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      margin-top: var(--space-6);
+      align-items: center;
+      gap: var(--space-4);
+      transition: transform var(--transition-base), border-color var(--transition-base);
     }
-    .mini-note {
+    .dl-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--color-accent);
+    }
+    .dl-card__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .dl-card__text { flex: 1; }
+    .dl-card__text strong { color: var(--color-text); display: block; }
+    .dl-card__text span { color: var(--color-text-secondary); font-size: var(--text-sm); }
+    .dl-card a {
+      flex-shrink: 0;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: var(--color-accent);
+      color: #fff;
+      font-weight: 600;
       font-size: var(--text-sm);
-      color: var(--color-text-tertiary);
-      margin-top: var(--space-4);
+      text-decoration: none;
     }
+
+    /* Vision box */
+    .vision-box {
+      background: linear-gradient(180deg, rgba(10,143,143,0.04), rgba(255,255,255,0.9));
+      border: 1px solid rgba(10,143,143,0.14);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .vision-box h3 { color: var(--color-text); margin-bottom: var(--space-2); }
+    .vision-box p { color: var(--color-text-secondary); font-size: var(--text-sm); max-width: 600px; margin: 0 auto; }
+
     @media (max-width: 900px) {
-      .free-grid, .related-links { grid-template-columns: 1fr; }
+      .free-grid, .free-grid--three, .dl-row { grid-template-columns: 1fr; }
     }
   </style>
 
   {{> analytics}}
 </head>
-<body data-page="free-library">
+<body data-theme="cyber" data-page="free-library">
+
+  <canvas id="knowledge-canvas"></canvas>
+
   {{> nav}}
 
   <main class="page-content">
+    <!-- Hero -->
     <section class="free-hero">
       <div class="container">
         <div class="free-hero__content">
-          <div class="free-kicker">🎁 แจกฟรี · คัดแล้ว · ใช้งานได้จริง</div>
-          <h1 class="free-title">คลัง Gem & GPTs ที่ผมจะคัดให้เป็นภาษาไทย</h1>
+          <div class="free-kicker">🎁 แจกฟรี · คัดแล้ว · ใช้ได้จริง</div>
+          <h1 class="free-title">คลังเครื่องมือ AI & ความรู้ที่ใช้ได้ฟรี</h1>
           <p class="free-lead">
-            แนวเว็บแจกฟรีน่าสนใจเพราะดึงคนเข้ามาได้เร็ว ผมเลยจะใช้มันเป็นเสาหลักเสริมของเว็บไซต์:
-            คัดของฟรีที่ใช้ได้จริง เล่าให้เข้าใจง่าย และต่อยอดกลับไปที่ Knowledge Hub ได้
+            รวมเครื่องมือ AI, บทความ, และทรัพยากรที่ผมคัดมาให้ — ไม่ต้องเสียเงินสักบาท 
+            เหมาะสำหรับคนไทยที่อยากเริ่มใช้ AI ทำงานแทนตัวเอง
           </p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="/knowledge/">กลับไปคลังความรู้</a>
-            <a class="btn btn--secondary" href="/">ดูหน้าแรก</a>
-          </div>
-          <p class="mini-note">สถานะ: Draft v1 สำหรับการทดลองทิศทาง ไม่ใช่การ publish ของจากภายนอก</p>
         </div>
       </div>
     </section>
 
+    <!-- 🔧 Free AI Tools -->
     <section class="container" style="position:relative;z-index:10;">
-      <div class="section-header">
-        <span class="section-label">แผนทดลอง</span>
-        <h2 class="section-title">3 สิ่งที่เราจะทำกับทิศทางนี้</h2>
-        <p class="section-subtitle">ไม่ใช่ pivot ทั้งเว็บ แต่เป็นการเพิ่ม content pillar ที่ช่วยดึง traffic และสร้างความน่าเชื่อถือไปพร้อมกัน</p>
+      <div class="section-intro">
+        <h2>🔧 6 เครื่องมือ AI ฟรีที่ใช้ได้จริง</h2>
+        <p>เครื่องมือที่ผมใช้ประจำ — ทุกตัวมีเวอร์ชันฟรี ไม่ต้องใช้บัตรเครดิต</p>
       </div>
 
-      <div class="free-grid">
+      <div class="free-grid--three free-grid">
+        <!-- ChatGPT -->
         <article class="free-card">
+          <div class="free-card__icon">💬</div>
+          <h2>ChatGPT</h2>
+          <p>แชท AI ที่คนใช้มากที่สุด — ถามตอบ เขียนเนื้อหา ระดมไอเดีย วิเคราะห์ข้อมูล ใช้ฟรีวันนี้</p>
           <div class="free-card__meta">
-            <span class="pill">1</span>
-            <span class="pill">Home / Hub / Free</span>
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">เริ่มต้น</span>
+            <span class="pill">ถามตอบ</span>
           </div>
-          <h2>วางโครงเว็บใหม่ให้ชัด</h2>
-          <p>โครงหลักยังเป็น Personal Website + Knowledge Hub แต่เพิ่มหมวด “แจกฟรี” ให้คนเข้าถึงงานที่คัดแล้วได้เร็ว</p>
-          <ul>
-            <li>หน้าแรก = ตัวตน + value</li>
-            <li>Knowledge Hub = ความรู้และบทความ</li>
-            <li>Free Library = ของฟรีที่คัดแล้ว</li>
-          </ul>
+          <a class="free-card__link" href="https://chat.openai.com" target="_blank" rel="noopener">เปิดใช้ →</a>
         </article>
 
+        <!-- Gemini -->
         <article class="free-card">
+          <div class="free-card__icon">🌐</div>
+          <h2>Google Gemini</h2>
+          <p>AI จาก Google — ค้นหาข้อมูลล่าสุด เชื่อมกับ Gmail, Drive, YouTube ได้ในตัว แถมฟรี</p>
           <div class="free-card__meta">
-            <span class="pill">2</span>
-            <span class="pill">Thai-first</span>
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">ค้นหา</span>
+            <span class="pill">Google</span>
           </div>
-          <h2>ทำให้คนใช้ได้ทันที</h2>
-          <p>ทุกชิ้นต้องเล่าแบบไทยสั้น ๆ ว่ามันคืออะไร ใช้เมื่อไหร่ เหมาะกับใคร และต้องระวังอะไรบ้าง</p>
-          <ul>
-            <li>ไม่เล่าเยอะ</li>
-            <li>มีตัวอย่างสั้น</li>
-            <li>มี CTA ต่อไปยังบทความหรือใช้งานจริง</li>
-          </ul>
+          <a class="free-card__link" href="https://gemini.google.com" target="_blank" rel="noopener">เปิดใช้ →</a>
         </article>
 
+        <!-- NotebookLM -->
         <article class="free-card">
+          <div class="free-card__icon">🎙️</div>
+          <h2>NotebookLM</h2>
+          <p>อัปโหลดเอกสารแล้ว AI สรุปให้ + สร้าง Podcast ให้คุณฟังได้ — เครื่องมือวิจัยสุดเจ๋งจาก Google</p>
           <div class="free-card__meta">
-            <span class="pill">3</span>
-            <span class="pill">Curated</span>
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">สรุปเอกสาร</span>
+            <span class="pill">Podcast</span>
           </div>
-          <h2>คัดเป็นระบบ ไม่ใช่กองลิงก์</h2>
-          <p>เราจะคัดเฉพาะของที่ดูมีคุณค่า ใช้งานง่าย และสอดคล้องกับคนไทย/งานจริงของทีม</p>
-          <ul>
-            <li>จัดหมวดชัด</li>
-            <li>ติด tag มาตรฐาน</li>
-            <li>มีรอบ review ของเก่า</li>
-          </ul>
+          <a class="free-card__link" href="https://notebooklm.google.com" target="_blank" rel="noopener">เปิดใช้ →</a>
         </article>
 
+        <!-- Claude -->
         <article class="free-card">
+          <div class="free-card__icon">🧠</div>
+          <h2>Claude</h2>
+          <p>AI สายคิดลึก — วิเคราะห์แม่น เขียนโค้ดเก่ง อ่านเอกสารยาวๆ ได้ ฟรีวันละหลายรอบ</p>
           <div class="free-card__meta">
-            <span class="pill">4</span>
-            <span class="pill">Content → Trust</span>
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">วิเคราะห์</span>
+            <span class="pill">เขียนโค้ด</span>
           </div>
-          <h2>ผูกกับ Knowledge Hub</h2>
-          <p>ของแจกฟรีจะไม่อยู่ลอย ๆ แต่เชื่อมกลับไปยังบทความสอนใช้, case study และวิธีคิดของเรา</p>
-          <ul>
-            <li>อ่านแล้วเข้าใจเร็ว</li>
-            <li>พาไปอ่านต่อได้</li>
-            <li>สร้างความน่าเชื่อถือ</li>
-          </ul>
+          <a class="free-card__link" href="https://claude.ai" target="_blank" rel="noopener">เปิดใช้ →</a>
+        </article>
+
+        <!-- Obsidian -->
+        <article class="free-card">
+          <div class="free-card__icon">📝</div>
+          <h2>Obsidian</h2>
+          <p>แอปจดโน้ตฟรี — สร้าง "สมองที่สอง" เชื่อมโยงไอเดียด้วยลิงก์ เหมือน Wikipedia ส่วนตัว</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">จดโน้ต</span>
+            <span class="pill">Knowledge Base</span>
+          </div>
+          <a class="free-card__link" href="https://obsidian.md" target="_blank" rel="noopener">ดาวน์โหลด →</a>
+        </article>
+
+        <!-- Dify -->
+        <article class="free-card">
+          <div class="free-card__icon">🤖</div>
+          <h2>Dify.ai</h2>
+          <p>สร้าง AI Agent แบบลากวาง — ไม่ต้องเขียนโค้ด สร้าง workflow อัตโนมัติ ใช้ฟรีสำหรับเริ่มต้น</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">ฟรี</span>
+            <span class="pill">No-Code</span>
+            <span class="pill">AI Agent</span>
+          </div>
+          <a class="free-card__link" href="https://dify.ai" target="_blank" rel="noopener">เปิดใช้ →</a>
         </article>
       </div>
     </section>
 
-    <section class="container" style="position:relative;z-index:10;margin-top:var(--space-16);">
-      <div class="section-header">
-        <span class="section-label">ชุดเริ่มต้น</span>
-        <h2 class="section-title">5 ชิ้นแรกที่ควรมี</h2>
-        <p class="section-subtitle">เราจะเริ่มจากตัวที่คนเข้าใจง่าย ใช้กับงานจริงได้ และต่อยอดเป็นคอนเทนต์/SEO ได้</p>
+    <!-- 📚 Free Knowledge (Articles) -->
+    <section class="container" style="position:relative;z-index:10;">
+      <div class="section-intro">
+        <h2>📚 บทความฟรีจาก Knowledge Hub</h2>
+        <p>อ่านฟรี — เขียนจากประสบการณ์จริงของคนที่เริ่มจากศูนย์ สร้างทีม AI 6 ตัวทำงานแทน</p>
       </div>
 
       <div class="free-grid">
         <article class="free-card">
-          <h2>AI Team Starter GPT</h2>
-          <p>ผู้ช่วยอธิบายวิธีตั้งทีม AI เบื้องต้นให้คนเริ่มจากศูนย์</p>
-          <div class="free-card__meta"><span class="pill">เริ่มต้น</span><span class="pill">0→1</span><span class="pill">คนไม่เคยใช้ AI</span></div>
+          <h2>AI Agent คืออะไร?</h2>
+          <p>ปูพื้นฐาน — Agent ไม่ใช่ศัพท์น่ากลัว มันคือ AI ที่ทำงานแทนคุณได้ แตกต่างจาก ChatGPT ยังไง?</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">⏱️ 7 นาที</span>
+            <span class="pill">เริ่มต้น</span>
+          </div>
+          <a class="free-card__link free-card__link--outline" href="./what-is-ai-agent.html">อ่านบทความ →</a>
         </article>
+
         <article class="free-card">
-          <h2>Prompt Cleaner Gem</h2>
-          <p>ช่วยเกลาพรอมป์ตให้สั้น ชัด และพร้อมเอาไปใช้ใน ChatGPT / Gemini</p>
-          <div class="free-card__meta"><span class="pill">ปรับ prompt</span><span class="pill">เขียนไว</span><span class="pill">ใช้ง่าย</span></div>
+          <h2>ตั้งทีม AI ตัวแรกใน 1 ชั่วโมง (ฟรี)</h2>
+          <p>Step-by-step สร้าง AI 2 ตัวทำงานร่วมกัน — หาข้อมูล + เขียนคอนเทนต์อัตโนมัติ ไม่ต้องเขียนโค้ด</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">⏱️ 6 นาที</span>
+            <span class="pill">จับมือทำ</span>
+          </div>
+          <a class="free-card__link free-card__link--outline" href="./setup-first-ai-team-one-hour.html">อ่านบทความ →</a>
         </article>
+
         <article class="free-card">
-          <h2>Research Summarizer GPT</h2>
-          <p>ย่อยข้อมูลหลายแหล่งให้เป็น bullet ที่อ่านง่ายสำหรับทำงานต่อ</p>
-          <div class="free-card__meta"><span class="pill">สรุปเร็ว</span><span class="pill">วิจัย</span><span class="pill">คัดประเด็น</span></div>
+          <h2>สร้างทีม AI 6 ตัวใน 4 เดือน</h2>
+          <p>จากคนไม่เคยเขียนโค้ด สู่เจ้าของทีม AI 6 ตัว — บทเรียนจริง เครื่องมือที่ใช้ ข้อผิดพลาดที่เจอ</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">⏱️ 5 นาที</span>
+            <span class="pill">เจาะลึก</span>
+          </div>
+          <a class="free-card__link free-card__link--outline" href="./build-ai-team-4-months.html">อ่านบทความ →</a>
         </article>
+
         <article class="free-card">
-          <h2>Knowledge Hub Writer Gem</h2>
-          <p>แปลงโน้ตหรือไอเดียให้กลายเป็นบทความสั้น ๆ ภาษาไทย</p>
-          <div class="free-card__meta"><span class="pill">เขียนคอนเทนต์</span><span class="pill">ไทย-first</span><span class="pill">พร้อมโพสต์</span></div>
-        </article>
-        <article class="free-card">
-          <h2>Content Hook Generator GPT</h2>
-          <p>ช่วยหา hook สำหรับโพสต์, landing page, หรือหัวข้อบทความแบบไม่ต้องคิดเยอะ</p>
-          <div class="free-card__meta"><span class="pill">การตลาด</span><span class="pill">โพสต์ไว</span><span class="pill">ดึงคนอ่าน</span></div>
-        </article>
-        <article class="free-card">
-          <h2>Agent-Vault Explainer</h2>
-          <p>อธิบายว่า Agent-Vault คืออะไร ใช้ทำอะไร และทำไมมันสำคัญกับทีม AI</p>
-          <div class="free-card__meta"><span class="pill">Knowledge</span><span class="pill">Agent-Vault</span><span class="pill">คำอธิบายง่าย</span></div>
+          <h2>Agent-Vault คืออะไร?</h2>
+          <p>ระบบคลังสมองที่ AI อ่านร่วมกันได้ — แก้ปัญหา AI หลายตัวคุยกันไม่รู้เรื่อง และความจำเสื่อม</p>
+          <div class="free-card__meta">
+            <span class="pill pill--accent">⏱️ 6 นาที</span>
+            <span class="pill">ระบบ</span>
+          </div>
+          <a class="free-card__link free-card__link--outline" href="./what-is-agent-vault.html">อ่านบทความ →</a>
         </article>
       </div>
     </section>
 
-    <section class="container decision-box">
-      <h2>กติกาก่อนจะเอาของขึ้นเว็บจริง</h2>
-      <div class="decision-list">
-        <div class="decision-item"><strong>1.</strong> ต้องบอกได้ชัดว่าเป็นของฟรีของเราเอง หรือเป็นของที่เผยแพร่ได้อย่างถูกต้อง</div>
-        <div class="decision-item"><strong>2.</strong> ทุก item ต้องมีคำอธิบายสั้น ๆ ว่าใช้กับอะไร และเหมาะกับใคร</div>
-        <div class="decision-item"><strong>3.</strong> ถ้า item เก่าเกินหรือคุณภาพไม่ดี ต้อง archive ออก ไม่ปล่อยให้รก</div>
-        <div class="decision-item"><strong>4.</strong> ทุกชิ้นควรพาคนกลับไปอ่าน Knowledge Hub หรือคุยกับผมต่อได้</div>
+    <!-- 📥 Free Downloads -->
+    <section class="container" style="position:relative;z-index:10;">
+      <div class="section-intro">
+        <h2>📥 ดาวน์โหลดฟรี</h2>
+        <p>สรุป 1 หน้า + Audio Podcast — เก็บไว้อ่านออฟไลน์ หรือฟังระหว่างเดินทาง</p>
       </div>
 
-      <div class="related-links">
-        <a href="/knowledge/build-ai-team-4-months.html">
-          <strong>บทความตัวอย่าง</strong>
-          <span>วิธีสร้างทีม AI 6 ตัวใน 4 เดือน</span>
-        </a>
-        <a href="/knowledge/what-is-ai-agent.html">
-          <strong>อ่านต่อ</strong>
-          <span>AI Agent คืออะไร? — อธิบายแบบคนไม่เคยเขียนโค้ด</span>
-        </a>
-        <a href="/knowledge/what-is-agent-vault.html">
-          <strong>พื้นฐานทีม</strong>
-          <span>Agent-Vault คืออะไร — ระบบคลังสมองที่ AI อ่านร่วมกันได้</span>
-        </a>
+      <div class="dl-row">
+        <div class="dl-card">
+          <div class="dl-card__icon">📄</div>
+          <div class="dl-card__text">
+            <strong>สรุป: สร้างทีม AI 6 ตัวใน 4 เดือน</strong>
+            <span>HTML สรุป 1 หน้า — ใจความสำคัญทั้งหมด</span>
+          </div>
+          <a href="../downloads/build-ai-team-summary.html">เปิด →</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card__icon">📄</div>
+          <div class="dl-card__text">
+            <strong>สรุป: AI Agent คืออะไร?</strong>
+            <span>HTML สรุป 1 หน้า — ใจความสำคัญทั้งหมด</span>
+          </div>
+          <a href="../downloads/what-is-ai-agent-summary.html">เปิด →</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card__icon">📄</div>
+          <div class="dl-card__text">
+            <strong>สรุป: ตั้งทีม AI ตัวแรกใน 1 ชั่วโมง</strong>
+            <span>HTML สรุป 1 หน้า — ใจความสำคัญทั้งหมด</span>
+          </div>
+          <a href="../downloads/setup-first-ai-team-summary.html">เปิด →</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card__icon">🎧</div>
+          <div class="dl-card__text">
+            <strong>Audio Podcast: AI คุยกันอธิบาย 3 บทความ</strong>
+            <span>ฟังแบบ Podcast — AI สองคนสรุปเนื้อหาให้คุณฟัง</span>
+          </div>
+          <a href="../downloads/liplnwza-audio-overview.mp4">ฟัง →</a>
+        </div>
       </div>
+    </section>
 
-      <p class="mini-note">ถัดไป: ถ้าคุณ approve เราจะสร้างหน้า list จริง, ปรับหน้า Home, และเริ่มคัดชุดแรก 10 ชิ้นเพื่อทดสอบ engagement</p>
+    <!-- 🌟 What's Next -->
+    <section class="container" style="position:relative;z-index:10;margin-bottom:var(--space-16);">
+      <div class="vision-box">
+        <h3>🌟 กำลังจะมาเพิ่ม</h3>
+        <p>
+          Prompt Template ภาษาไทย · AI Workflow Template · เปรียบเทียบเครื่องมือ AI แต่ละตัว 
+          · และของฟรีที่ผมใช้จริงในทีม AI 6 ตัว — ถ้าอยากให้มีอะไรเป็นพิเศษ 
+          <a href="../contact.html" style="color:var(--color-accent);">บอกผมได้ที่นี่</a>
+        </p>
+      </div>
     </section>
   </main>
 
   {{> footer}}
+
+  <script type="module" src="/src/knowledge-bg.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
